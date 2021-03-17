@@ -27,9 +27,20 @@
     rmax="1400" rmin="0" z="1" lunit="mm"/>
 
   <tube
+    name="trackingVirtualPlane2_solid"
+    startphi="0" deltaphi="360" aunit="deg"
+    rmax="1400" rmin="41.6*25.4/2+1+0.5" z="1" lunit="mm"/>
+
+  <tube
     name="collarVirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
     rmax="1200" rmin="0" z="1" lunit="mm"/>
+
+  <tube
+    name="collarVirtualPlane2_solid"
+    startphi="0" deltaphi="360" aunit="deg"
+    rmax="1200" rmin="39.8*25.4/2+1+0.5" z="1" lunit="mm"/>
+
 
   <tube
     name="dumpVirtualPlane_solid"
@@ -49,37 +60,37 @@
   <tube
     name="bellows1VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="7.8*25.4/2" rmax="7.8*25.4/2+10" z="325" lunit="mm"/>
+    rmin="7.8*25.4/2" rmax="7.8*25.4/2+1" z="325" lunit="mm"/>
 
   <tube
     name="bellows2VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="9.8*25.4/2" rmax="9.8*25.4/2+10" z="380" lunit="mm"/>
+    rmin="9.8*25.4/2" rmax="9.8*25.4/2+1" z="380" lunit="mm"/>
 
   <tube
     name="bellows3VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="25.8*25.4/2" rmax="25.8*25.4/2+10" z="508" lunit="mm"/>
+    rmin="25.8*25.4/2" rmax="25.8*25.4/2+1" z="508" lunit="mm"/>
 
   <tube
     name="bellows4VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="51*25.4/2" rmax="51*25.4/2+10" z="150" lunit="mm"/>
+    rmin="51*25.4/2" rmax="51*25.4/2+1" z="150" lunit="mm"/>
 
   <tube
     name="bellows5VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="39.8*25.4/2" rmax="39.8*25.4/2+10" z="120" lunit="mm"/>
+    rmin="39.8*25.4/2" rmax="39.8*25.4/2+1" z="120" lunit="mm"/>
 
   <tube
     name="bellows6VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="41.6*25.4/2" rmax="41.6*25.4/2+10" z="120" lunit="mm"/>
+    rmin="41.6*25.4/2" rmax="41.6*25.4/2+1" z="120" lunit="mm"/>
 
   <tube
     name="bellows7VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="16*25.4/2" rmax="16*25.4/2+10" z="570" lunit="mm"/>
+    rmin="16*25.4/2" rmax="16*25.4/2+1" z="570" lunit="mm"/>
 
 
  
@@ -90,6 +101,13 @@
   <volume name="trackingDetectorVirtualPlane_log">
     <materialref ref="G4_Galactic"/>
     <solidref ref="trackingVirtualPlane_solid"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="30"/>
+  </volume>
+
+  <volume name="trackingDetectorVirtualPlane2_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="trackingVirtualPlane2_solid"/>
     <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
     <auxiliary auxtype="DetNo" auxvalue="30"/>
   </volume>
@@ -117,7 +135,7 @@
 
   <volume name="collar2VirtualPlane_log">
     <materialref ref="G4_Galactic"/>
-    <solidref ref="collarVirtualPlane_solid"/>
+    <solidref ref="collarVirtualPlane2_solid"/>
     <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
     <auxiliary auxtype="DetNo" auxvalue="41"/>
   </volume>
@@ -253,7 +271,7 @@
       <positionref ref="trackingDetectorVirtualPlaneFront1_pos"/>
     </physvol>
     <physvol name="trackingDetectorVirtualPlaneFront2_phys">
-      <volumeref ref="trackingDetectorVirtualPlane_log"/>
+      <volumeref ref="trackingDetectorVirtualPlane2_log"/>
       <positionref ref="trackingDetectorVirtualPlaneFront2_pos"/>
     </physvol>
     <physvol name="trackingDetectorVirtualPlaneBack1_phys">
