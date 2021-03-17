@@ -5,16 +5,17 @@ import sys, os, time, tarfile
 
 def main():
 
-    email = "tao@jlab.org"
+    email = "palatchi@jlab.org"
 
-    config = "moller_TgtConf_Feb20"
+    config = "moller_test"
 
-    sourceDir = "/w/moller12gev-sciwork18/tao/remoll"
-    outDir = "/volatile/halla/moller12gev/tao/"+config
+    sourceDir = "/w/moller12gev-sciwork18/palatchi/remoll"
+    outDir = "/volatile/halla/moller12gev/palatchi/"+config
 
     activeDetectors = [28, 
                        40,41,42,43,44,45,46,
                        55, 56, 57, 58,
+                       70,71,72,73,74,75,76,
                        99,101,200,
                        5500, 5501, 5502,
                        5510, 5530, 5531,
