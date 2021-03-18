@@ -6,7 +6,7 @@ def main():
 
     email = "palatchi@jlab.org"
 
-    config = "remoll_test"
+    config = "remoll_bellows_beam"
 
     sourceDir = "/w/moller12gev-sciwork18/palatchi/moller/remoll/"
     outDir = "/volatile/halla/moller12gev/palatchi/"+config
@@ -113,8 +113,8 @@ def createSBATCHfile(sourceDir,outDirFull,jobName,jobNr):
     f.write("#SBATCH --job-name="+jobName+'_%03d'%jobNr+"\n")
     f.write("#SBATCH --output="+outDirFull+"/log.out\n")
     f.write("#SBATCH  --error="+outDirFull+"/log.err\n")
-    f.write("#SBATCH --partition=priority\n")
-    #f.write("#SBATCH --partition=production\n")
+    #f.write("#SBATCH --partition=priority\n")
+    f.write("#SBATCH --partition=production\n")
     f.write("#SBATCH --account=halla\n")
     f.write("#SBATCH --mem-per-cpu=5000\n")
     f.write("cd "+outDirFull+"\n")
