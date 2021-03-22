@@ -82,4 +82,4 @@
 
 #/tracking/verbose 2
 /remoll/printtargetinfo
-/run/beamOn 10
+/run/beamOn 10000
