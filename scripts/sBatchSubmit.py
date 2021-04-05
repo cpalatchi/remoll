@@ -6,7 +6,7 @@ def main():
 
     email = "palatchi@jlab.org"
 
-    config = "remoll_bellows_beam"
+    config = "remoll_bellows_beam_100M"
 
     sourceDir = "/w/moller12gev-sciwork18/palatchi/moller/remoll/"
     outDir = "/volatile/halla/moller12gev/palatchi/"+config
@@ -17,7 +17,7 @@ def main():
        os.makedirs(outDir)
     nrEv   = 100000 #900000 100k is 10hours
     nrStart= 1
-    nrStop = 2 #(nrStop -nrStart) total jobs
+    nrStop = 1001 #(nrStop -nrStart) total jobs
     submit  = 1
 
     print('Running ' + str(nrEv*(nrStop - nrStart)) + ' events...')
