@@ -1,12 +1,54 @@
-void plot_carynbellows(int b = 70){
+void plot_carynbellows(int b = 70, int plot=0){
+
    //Tfile
   //TString filename="/volatile/halla/moller12gev/palatchi/remoll_bellows_beam_100M/remoll_bellows_beam_100M_100kEv";
 
   TString filename = "__carynplots.root";
   TFile *_file0 = TFile::Open(Form("det%d%s",b,filename.Data()));
   TDirectory *d = _file0->GetDirectory("QA");
+  //Get energy info
+
+    TCanvas *c0 = new TCanvas("c0","c0",100,100,700,700);  
+    c0->cd();
+    gStyle->SetOptStat("eMRoui");
+
+    TH1D *h;
+    //get energy info
+      h=(TH1D*)d->Get("hE");
+      double Nbins=1000;
+      double Min=0;
+      double Max=1500;
+      double scale = (Max-Min)/Nbins;
+      //bin#*scale+Min=#MeV
+      //to get bin# for 10MeV, take (10MeV-Min)/scale= (10MeV-Min) * Nbins/(Max-Min)= 10MeV * 1000/1500
+      int bin10MeV=(10-Min)/scale;
+      int bin1MeV=(1-Min)/scale;
+      int bin100MeV=(100-Min)/scale;
+      int bin1500MeV=(1500-Min)/scale;
+      cout<<"bellows "<<b<<endl;
+      cout<<"bin# 1MeV="<<bin1MeV<<" 10MeV="<<bin10MeV<<" 100MeV="<<bin100MeV<<" 1500MeV="<<bin1500MeV<<endl;
+      cout<<"N@ 1MeV="<<h->GetBinContent(bin1MeV)<<" 10MeV="<<h->GetBinContent(bin10MeV)<<" 100MeV="<<h->GetBinContent(bin100MeV)<<" 1500MeV="<<h->GetBinContent(bin1500MeV)<<endl;
+      cout<<"Entries="<<Form("%6.0f",h->GetEntries())<<" Overflow="<<h->GetBinContent(1001)<<" Underflow="<<h->GetBinContent(-1)<<endl;
+      cout<<" 1-10MeV:"<<Form("%6.0f",h->Integral(bin1MeV,bin10MeV))<<" 10-100MeV:"<<Form("%6.0f",h->Integral(bin10MeV+1,bin100MeV))<<" >100MeV:"<<Form("%6.0f",h->Integral(bin100MeV+1,Nbins+1))<<endl;
+      int N1_10MeV = h->Integral(bin1MeV,bin10MeV);
+      int N10_100MeV = h->Integral(bin10MeV+1,bin100MeV);
+      int Ngt100MeV = h->Integral(bin100MeV+1,Nbins+1);
+
+      h->SetTitle(Form("bellows %d E(MeV) 1-10MeV: %d, 10-100MeV: %d, >100MeV: %d",b, N1_10MeV,N10_100MeV,Ngt100MeV));
+      h->Draw();
+      c0->SetLogx();
+      c0->SetLogy();
+
+      //cout<<h->Integral(1,10);
+      if(plot==1){
+
     TCanvas *c1 = new TCanvas("c1","c1",0,0,1600,850);
     c1->Divide(4,2);
+    //    TExec* ex1 = new TExec("ex1","gStyle->SetOptStat(1111);");
+    //    TExec* ex1 = new TExec("ex1",Form("gStyle->SetOptStat(%s);",""eMRoui""));
+    //    ex1->Draw();
+       gStyle->SetOptStat("eMRoui");
+
     vector<string> hNms = {"hE","hphi","hthetaP","hradius",
 			   "hE_ecut","hphi_ecut","hthetaP_ecut","hradius_ecut"};
 
@@ -15,10 +57,6 @@ void plot_carynbellows(int b = 70){
     int logy[] = {1,0,1,1,
 		1,0,1,1};
 
-    TExec* ex1 = new TExec("ex1","gStyle->SetOptStat(1111);");
-    ex1->Draw();
-    //    gStyle->SetOptStat("eMRoui");
-    TH1D *h;
     for(int i=0;i<hNms.size();i++){
       c1->cd(1+i);
       c1->cd(1+i)->SetLogx(logx[i]);
@@ -137,5 +175,7 @@ void plot_carynbellows(int b = 70){
     //       c1->SetLogy();
     //       c1->SetLogx();
   //savePDF
+
+      }
 
 }
