@@ -105,7 +105,7 @@ const char remollMagneticField::kCubicMap[64][3] = {
 };
 
 remollMagneticField::remollMagneticField( G4String filename )
-: fInterpolationType(kCubic)
+: fInterpolationType(kLinear)
 {
     fName = filename;
     fFilename = filename;
