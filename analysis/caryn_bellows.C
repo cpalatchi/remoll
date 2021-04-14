@@ -22,16 +22,17 @@ void caryn_bellows(int detnum=70){
   outfile.open(outfilename);
   //  outfile<<"test"<<endl;
   //only saving tracks that aren't going through the detector a second time to prevent redundancy
-	outfile<<"run"<<" ";
-	outfile<<"det"<<" ";
-	outfile<<"Entry$"<<" ";
-	outfile<<"track"<<" ";
-	outfile<<"x"<<" ";
-	outfile<<"y"<<" ";
-	outfile<<"z"<<" ";
-	outfile<<"px"<<" ";
-	outfile<<"py"<<" ";
-	outfile<<"pz"<<endl;;
+
+	// outfile<<"run"<<" ";
+	// outfile<<"det"<<" ";
+	// outfile<<"Entry$"<<" ";
+	// outfile<<"track"<<" ";
+	// outfile<<"x"<<" ";
+	// outfile<<"y"<<" ";
+	// outfile<<"z"<<" ";
+	// outfile<<"px"<<" ";
+	// outfile<<"py"<<" ";
+	// outfile<<"pz"<<endl;;
 
 
   for(int runnum=1;runnum<Nruns+1;runnum++){
