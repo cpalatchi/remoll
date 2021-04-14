@@ -15,26 +15,42 @@ void plot_carynbellows(int b = 70, int plot=0){
     TH1D *h;
     //get energy info
       h=(TH1D*)d->Get("hE");
-      double Nbins=1000;
+      double Nbins=1500;//1000
       double Min=0;
-      double Max=1500;
-      double scale = (Max-Min)/Nbins;
+      double Max=1500;//1500
+      if(b==28){
+	Nbins=11000;
+	Max=11000;
+      }
+      if(b==70){
+	Nbins=6000;
+	Max=6000;
+      }
+      double scale = 1;//set Nbins=Max in basicana (Max-Min)/Nbins;
       //bin#*scale+Min=#MeV
       //to get bin# for 10MeV, take (10MeV-Min)/scale= (10MeV-Min) * Nbins/(Max-Min)= 10MeV * 1000/1500
       int bin10MeV=(10-Min)/scale;
       int bin1MeV=(1-Min)/scale;
       int bin100MeV=(100-Min)/scale;
       int bin1500MeV=(1500-Min)/scale;
+      int bin3000MeV=(3000-Min)/scale;
+      int bin10GeV=(10000-Min)/scale;
+      int bin10950MeV=(10950-Min)/scale;
+
       cout<<"bellows "<<b<<endl;
       cout<<"bin# 1MeV="<<bin1MeV<<" 10MeV="<<bin10MeV<<" 100MeV="<<bin100MeV<<" 1500MeV="<<bin1500MeV<<endl;
       cout<<"N@ 1MeV="<<h->GetBinContent(bin1MeV)<<" 10MeV="<<h->GetBinContent(bin10MeV)<<" 100MeV="<<h->GetBinContent(bin100MeV)<<" 1500MeV="<<h->GetBinContent(bin1500MeV)<<endl;
-      cout<<"Entries="<<Form("%6.0f",h->GetEntries())<<" Overflow="<<h->GetBinContent(1001)<<" Underflow="<<h->GetBinContent(-1)<<endl;
-      cout<<" 1-10MeV:"<<Form("%6.0f",h->Integral(bin1MeV,bin10MeV))<<" 10-100MeV:"<<Form("%6.0f",h->Integral(bin10MeV+1,bin100MeV))<<" >100MeV:"<<Form("%6.0f",h->Integral(bin100MeV+1,Nbins+1))<<endl;
-      int N1_10MeV = h->Integral(bin1MeV,bin10MeV);
+      cout<<"Entries="<<Form("%6.0f",h->GetEntries())<<" Overflow="<<h->GetBinContent(Nbins+1)<<" Underflow="<<h->GetBinContent(-1)<<endl;
+      cout<<"0-1MeV: "<<h->Integral(-1,bin1MeV)<<" 1-10MeV:"<<Form("%6.0f",h->Integral(bin1MeV+1,bin10MeV))<<" 10-100MeV:"<<Form("%6.0f",h->Integral(bin10MeV+1,bin100MeV))<<" 100MeV-10GeV:"<<Form("%6.0f",h->Integral(bin100MeV+1,bin10GeV))<<" 10GeV-10950MeV:"<<Form("%6.0f",h->Integral(bin10GeV+1,bin10950MeV))<<" >10950MeV:"<<Form("%6.0f",h->Integral(bin10950MeV+1,Nbins+1))<<endl;
+      int N0_1MeV = h->Integral(-1,bin1MeV);
+      int N1_10MeV = h->Integral(bin1MeV+1,bin10MeV);
       int N10_100MeV = h->Integral(bin10MeV+1,bin100MeV);
       int Ngt100MeV = h->Integral(bin100MeV+1,Nbins+1);
+      int N100_10GeV = h->Integral(bin100MeV+1,bin10GeV);
+      int N10000_10950MeV = h->Integral(bin10GeV+1,bin10950MeV);
+      int Ngt10950MeV =h->Integral(bin10950MeV+1,Nbins+1);
 
-      h->SetTitle(Form("bellows %d E(MeV) 1-10MeV: %d, 10-100MeV: %d, >100MeV: %d",b, N1_10MeV,N10_100MeV,Ngt100MeV));
+      h->SetTitle(Form("bellows %d E(MeV) 0-1MeV: %d, 1-10MeV: %d, 10-100MeV: %d, 0.1-10GeV: %d",b, N0_1MeV,N1_10MeV,N10_100MeV,N100_10GeV));
       h->Draw();
       c0->SetLogx();
       c0->SetLogy();
@@ -92,6 +108,7 @@ void plot_carynbellows(int b = 70, int plot=0){
       h2a->GetYaxis()->SetTitleOffset(1.5);
        }
 
+
     //    gStyle->SetOptStat(0);
 
     TCanvas *c2b = new TCanvas("c2b","c2b",0,0,1600,650);
@@ -112,6 +129,28 @@ void plot_carynbellows(int b = 70, int plot=0){
       h2b=(TH2D*)d->Get(hNms2b[i].c_str());
       h2b->Draw("colz");
       h2b->GetYaxis()->SetTitleOffset(1);
+       }
+
+    //new plots
+    TCanvas *c2c = new TCanvas("c2c","c2c",0,0,1600,650);
+    ex2->Draw();
+    c2c->Divide(4,2);
+    vector<string> hNms2c = {"heVSz","heVSr",
+"heVSz_ecut","heVSr_ecut" };
+    int logx2c[] = {0,0,0,0};
+    int logy2c[] = {0,0,0,0};
+    int logz2c[] = {1,1,1,1};
+
+
+    TH2D *h2c;
+    for(int i=0;i<hNms2c.size();i++){
+      c2c->cd(1+i);
+      c2c->cd(1+i)->SetLogx(logx2c[i]);
+      c2c->cd(1+i)->SetLogy(logy2c[i]);
+      c2c->cd(1+i)->SetLogz(logz2c[i]);
+      h2c=(TH2D*)d->Get(hNms2c[i].c_str());
+      h2c->Draw("colz");
+      h2c->GetYaxis()->SetTitleOffset(1.5);
        }
 
 
