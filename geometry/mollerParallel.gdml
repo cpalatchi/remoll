@@ -46,44 +46,6 @@
     startphi="0" deltaphi="360" aunit="deg"
     rmin="1450" rmax="1460" z="2700" lunit="mm"/>
 
-  <tube
-    name="bellows1VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="7.8*25.4/2" rmax="7.8*25.4/2+50" z="325" lunit="mm"/>
-
- <tube
-    name="bellows2VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="9.8*25.4/2" rmax="9.8*25.4/2+50" z="17.2*25.4" lunit="mm"/>
-
-  <tube
-    name="bellows3VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="25.8*25.4/2" rmax="25.8*25.4/2+50" z="15.7*25.4" lunit="mm"/>
-
-
-  <tube
-    name="bellows4VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="600" rmax="600+50" z="12.82*25.4" lunit="mm"/>
-<!--    rmin="56.4*25.4/2" rmax="56.4*25.4/2+50" z="12.82*25.4" lunit="mm"/> -->
-
-  <tube
-    name="bellows5VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="40.8*25.4/2" rmax="40.8*25.4/2+50" z="5.51*25.4" lunit="mm"/>
-
-  <tube
-    name="bellows6VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="41.2*25.4/2" rmax="41.2*25.4/2+50" z="8.06*25.4" lunit="mm"/>
-
-  <tube
-    name="bellows7VirtualPlane_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="16*25.4/2" rmax="16*25.4/2+50" z="24.5*25.4" lunit="mm"/>
-
-
   <sphere name="targetSphere_solid" 
 	  rmin="700" rmax="701" lunit="mm"
 	  deltaphi="360" deltatheta="180" aunit="deg"/>
@@ -111,6 +73,21 @@
             
   <box lunit="mm" name="sbsBunkerFrontFace_solid" 
        x="11000" y="4500" z="1"/>
+
+  <box lunit="mm" name="usHybridVirtualPlane_solid"
+       x="5000" y="6000" z="1"/>
+
+  <box lunit="mm" name="coll1InnerSideVirtualPlane_solid"
+       x="1" y="1270*2" z="4335"/>
+
+  <box lunit="mm" name="coll1OuterSideVirtualPlane_solid"
+       x="1" y="6000" z="4335"/>
+
+  <box lunit="mm" name="coll1InnerTopVirtualPlane_solid"
+       x="1270" y="1" z="4335"/>
+
+  <box lunit="mm" name="coll1OuterTopVirtualPlane_solid"
+       x="1270+1400*2" y="1" z="4335"/>
 </solids>
 
 <structure>
@@ -284,12 +261,82 @@
 
   <volume name="usHybridVirtualPlane_log">
     <materialref ref="G4_Galactic"/>
-    <solidref ref="VirtualPlane_solid"/>
+    <solidref ref="usHybridVirtualPlane_solid"/>
     <auxiliary auxtype="Visibility" auxvalue="true"/>
     <auxiliary auxtype="Color" auxvalue="yellow"/>
     <auxiliary auxtype="Alpha" auxvalue="1"/>
     <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="5560"/>
+    <auxiliary auxtype="DetNo" auxvalue="5620"/>
+  </volume>
+
+  <volume name="coll1InnerLeftVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1InnerSideVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5600"/>
+  </volume>
+
+  <volume name="coll1OuterLeftVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1OuterSideVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5610"/>
+  </volume>
+
+  <volume name="coll1InnerRightVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1InnerSideVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5601"/>
+  </volume>
+
+  <volume name="coll1OuterRightVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1OuterSideVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5611"/>
+  </volume>
+
+  <volume name="coll1InnerTopVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1InnerTopVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5603"/>
+  </volume>
+
+  <volume name="coll1OuterTopVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1OuterTopVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5613"/>
+  </volume>
+
+  <volume name="coll1OuterBottomVirtualPlane_log">
+    <materialref ref="G4_Galactic"/>
+    <solidref ref="coll1OuterTopVirtualPlane_solid"/>
+    <auxiliary auxtype="Visibility" auxvalue="true"/>
+    <auxiliary auxtype="Color" auxvalue="yellow"/>
+    <auxiliary auxtype="Alpha" auxvalue="1"/>
+    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
+    <auxiliary auxtype="DetNo" auxvalue="5614"/>
   </volume>
 
   <volume name="trackingDetectorVirtualPlane_log">
@@ -336,56 +383,6 @@
     <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
     <auxiliary auxtype="DetNo" auxvalue="50"/>
   </volume>
-
-  <volume name="bellows1VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows1VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="70"/>
-  </volume>
-
-  <volume name="bellows2VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows2VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="71"/>
-  </volume>
-
-  <volume name="bellows3VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows3VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="72"/>
-  </volume>
-
-  <volume name="bellows4VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows4VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="73"/>
-  </volume>
-
-  <volume name="bellows5VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows5VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="74"/>
-  </volume>
-
-  <volume name="bellows6VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows6VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="75"/>
-  </volume>
-
-  <volume name="bellows7VirtualPlane_log">
-    <materialref ref="G4_Galactic"/>
-    <solidref ref="bellows7VirtualPlane_solid"/>
-    <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="76"/>
-  </volume>
-
 
   <volume name="SAMusVirtualPlane_log">
     <materialref ref="G4_Galactic"/>
@@ -452,10 +449,10 @@
       <positionref ref="targetCenter"/>
     </physvol>
 
-<!--    <physvol    name="targetPbWallDSVirtualPlane_phys">
+    <physvol    name="targetPbWallDSVirtualPlane_phys">
       <volumeref ref="targetPbWallDSVirtualPlane_log"/>
       <position name="targetPbWallDSVirtualPlane_pos" unit="mm" z="-2800+60"/>
-    </physvol> -->
+    </physvol>
     
     <physvol    name="skyshineVacuumDet1VirtualPlane_phys">
       <volumeref ref="skyshineVacuumDet1VirtualPlane_log"/>
@@ -512,6 +509,41 @@
       <position name="usHybridVirtualPlane_pos" unit="mm" z="4800"/>
     </physvol>
 
+    <physvol    name="coll1InnerLeftVirtualPlane_phys">
+      <volumeref ref="coll1InnerLeftVirtualPlane_log"/>
+      <position name="coll1InnerLeftVirtualPlane_pos" unit="mm" x="1270/2-1" y="-510" z="852.5"/>
+    </physvol>
+
+    <physvol    name="coll1OuterLeftVirtualPlane_phys">
+      <volumeref ref="coll1OuterLeftVirtualPlane_log"/>
+      <position name="coll1OuterLeftVirtualPlane_pos" unit="mm" x="+1270/2+1401" z="852.5"/>
+    </physvol>
+
+    <physvol    name="coll1InnerRightVirtualPlane_phys">
+      <volumeref ref="coll1InnerRightVirtualPlane_log"/>
+      <position name="coll1InnerRightVirtualPlane_pos" unit="mm" x="-1270/2+1" y="-510" z="852.5"/>
+    </physvol>
+
+    <physvol    name="coll1OuterRightVirtualPlane_phys">
+      <volumeref ref="coll1OuterRightVirtualPlane_log"/>
+      <position name="coll1OuterRightVirtualPlane_pos" unit="mm" x="-1270/2-1401" z="852.5"/>
+    </physvol>
+
+    <physvol    name="coll1InnerTopVirtualPlane_phys">
+      <volumeref ref="coll1InnerTopVirtualPlane_log"/>
+      <position name="coll1InnerTopVirtualPlane_pos" unit="mm" y="759" z="852.5"/>
+    </physvol>
+
+    <physvol    name="coll1OuterTopVirtualPlane_phys">
+      <volumeref ref="coll1OuterTopVirtualPlane_log"/>
+      <position name="coll1OuterTopVirtualPlane_pos" unit="mm" y="760+1405" z="852.50"/>
+    </physvol>
+
+    <physvol    name="coll1OuterBottomVirtualPlane_phys">
+      <volumeref ref="coll1OuterBottomVirtualPlane_log"/>
+      <position name="coll1OuterBottomVirtualPlane_pos" unit="mm" y="-1825" z="852.5"/>
+    </physvol>
+
     <!-- Tracking planes -->
     <physvol name="trackingDetectorVirtualPlaneFront1_phys">
       <volumeref ref="trackingDetectorVirtualPlane_log"/>
@@ -556,41 +588,6 @@
     <physvol name="gemVirtualPlane_phys">
       <volumeref ref="gemVirtualPlane_log"/>
       <positionref ref="gemVirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows1VirtualPlane_phys">
-      <volumeref ref="bellows1VirtualPlane_log"/>
-      <positionref ref="bellows1VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows2VirtualPlane_phys">
-      <volumeref ref="bellows2VirtualPlane_log"/>
-      <positionref ref="bellows2VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows3VirtualPlane_phys">
-      <volumeref ref="bellows3VirtualPlane_log"/>
-      <positionref ref="bellows3VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows4VirtualPlane_phys">
-      <volumeref ref="bellows4VirtualPlane_log"/>
-      <positionref ref="bellows4VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows5VirtualPlane_phys">
-      <volumeref ref="bellows5VirtualPlane_log"/>
-      <positionref ref="bellows5VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows6VirtualPlane_phys">
-      <volumeref ref="bellows6VirtualPlane_log"/>
-      <positionref ref="bellows6VirtualPlane_pos"/>
-    </physvol>
-
-    <physvol name="bellows7VirtualPlane_phys">
-      <volumeref ref="bellows7VirtualPlane_log"/>
-      <positionref ref="bellows7VirtualPlane_pos"/>
     </physvol>
 
     <physvol name="SAMusVirtualPlane_phys">
