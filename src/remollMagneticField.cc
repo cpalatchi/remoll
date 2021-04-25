@@ -495,8 +495,19 @@ void remollMagneticField::GetFieldValue(const G4double Point[4], G4double *Bfiel
     assert( 0 <= idx[kZ]   && idx[kZ]   < fN[kZ] );
 
     // Interpolate
-    G4double Bint[__NDIM] = {0};
+    G4ThreeVector Bcart(0.0,0.0,0.0);
     for(int cidx = 0; cidx < __NDIM; cidx++ ){
+        switch (type) {
+            case kLinear: {
+                Bcart[cidx] = _trilinearInterpolate(values[cidx], x);
+                break;
+            }
+            case kCubic: {
+                Bcart[cidx] = _tricubicInterpolate(values[cidx], x);
+                break;
+            }
+        }
+    }
 
         G4double c00, c10, c01, c11;
 	c00 = fBFieldData[cidx][idx[kR]][idx[kPhi]][idx[kZ]]*(1.0-x[kR])
