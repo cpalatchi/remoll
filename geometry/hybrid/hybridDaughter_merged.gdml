@@ -46,7 +46,7 @@
     <constant name="boxDSShieldColl1_inner_rmax" value="265"/>
     <constant name="boxDSShieldColl1_width" value="5715"/>
     <constant name="boxDSShieldColl1_height" value="5000/3"/> <!-- /2"/> FIXME new, reduce height a lot -->
-    <constant name="boxDSShieldColl1_length" value="1000 + 400 - coll4shield_shift"/>
+    <constant name="boxDSShieldColl1_length" value="1000 + 400 - coll4shield_shift-550"/>
     <!-- Concrete Shield1 will be outside shielding block 4 -->
     <constant name="DSConcreteShield1_side_thickness" value="400"/>
     <constant name="DSConcreteShield1_top_thickness" value="400"/>
@@ -54,7 +54,7 @@
     <constant name="DSConcreteShield1_length" value="boxDSShieldColl1_length + 1 + 1*DSConcreteShield1_side_thickness"/> <!-- was 2* -->
     <constant name="DSConcreteShield1_height" value="boxDSShieldColl1_height + 1 + DSConcreteShield1_top_thickness + DSConcreteShield1_bottom_thickness"/>
     <position name="boxDSConcreteShield1_trans2" unit="mm" x="0" y="0" z="0"/>
-    <position name="boxDSConcreteShield1_center" unit="mm" x="0" y="0" z="9020-DOFFSET - coll4shield_shift/2"/>
+    <position name="boxDSConcreteShield1_center" unit="mm" x="0" y="0" z="9020-DOFFSET - coll4shield_shift/2 -275"/>
 
     <!-- this is for Lead wall dimension -->
     <constant name="DSShield_local_height" value="2400"/>
@@ -619,10 +619,10 @@
       </physvol>
 
 
-      <!-- <physvol> -->
-      <!--   <volumeref ref="boxDSConcreteShield1_logic"/> -->
-      <!--   <positionref ref="boxDSConcreteShield1_center"/> -->
-      <!-- </physvol> -->
+      <physvol> 
+         <volumeref ref="boxDSConcreteShield1_logic"/> 
+         <positionref ref="boxDSConcreteShield1_center"/> 
+       </physvol> 
 
       <!-- Lead wall DS of collimator 4 -->
       <physvol name="hybridPbWall">
@@ -647,7 +647,7 @@
 	<position name="DSpipe1_pos" x="0" y="0" z="boxDSMother_length/2-490.0"/>
       </physvol>
 
-      <physvol name="DSpipe1_flange">
+<!--      <physvol name="DSpipe1_flange">
 	<volumeref ref="logic_DSpipe1_flange"/>
 	<position name="DSpipe1_flange" x="0" y="0" z="boxDSMother_length/2-261.0"/>
       </physvol>
@@ -666,6 +666,7 @@
 	<volumeref ref="logic_DSpipe2_1"/>
 	<position name="DSpipe1_DSpipe2_1_pos" x="0" y="0" z="boxDSMother_length/2-36.0"/>
       </physvol>
+-->
 
     </volume>
   </structure>
