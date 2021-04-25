@@ -79,7 +79,8 @@
   <tube
     name="bellows7VirtualPlane_solid"
     startphi="0" deltaphi="360" aunit="deg"
-    rmin="197" rmax="197+52" z="572" lunit="mm"/>
+    rmin="197" rmax="197+52" z="622.3" lunit="mm"/> 
+<!--    rmin="197" rmax="197+52" z="572" lunit="mm"/> -->
 
 
   <sphere name="targetSphere_solid" 
