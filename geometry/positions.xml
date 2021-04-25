@@ -50,6 +50,18 @@ detectors are placed -->
 <!-- Beamline detectors for radiation -->
 <position name="collar1VirtualPlane_pos" z="12250.00" unit="mm"/>
 <position name="collar2VirtualPlane_pos" z="18900.00" unit="mm"/>
+
+<position name="bellows1VirtualPlane_pos" z="1690.00-4500.0" unit="mm"/>
+<position name="bellows2VirtualPlane_pos" z="4087.00-4500.0" unit="mm"/>
+<position name="bellows3VirtualPlane_pos" z="8946.00-4500.0" unit="mm"/>
+<!--<position name="bellows4VirtualPlane_pos" z="16900.00-4500.0" unit="mm"/>-->
+<position name="bellows4VirtualPlane_pos" z="17075-4500" unit="mm"/>
+<position name="bellows5VirtualPlane_pos" z="23430.00-4500.0" unit="mm"/>
+<position name="bellows6VirtualPlane_pos" z="24280.00-4500.0" unit="mm"/>
+<!--<position name="bellows7VirtualPlane_pos" z="30160.00-4500.0" unit="mm"/>-->
+<position name="bellows7VirtualPlane_pos" z="25119.872+530.352/2" unit="mm"/>
+
+
 <position name="gemVirtualPlane_pos" z="20375.00" unit="mm"/>
 <position name="SAMusVirtualPlane_pos" z="24970.00" unit="mm"/>
 <position name="dumpEntranceVirtualPlane_pos" z="26500.00" unit="mm"/>
