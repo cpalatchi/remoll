@@ -4,7 +4,7 @@
     xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <define>
-    <constant name="bellows5_eps" value="0.1"/>
+<!--    <constant name="bellows5_eps" value="0.1"/>
     <constant name="bellows5_IR" value="500+bellows5_eps/2"/>
     <constant name="bellows5flange_length" value="48-bellows5_eps"/>
     <constant name="bellows5flange_Rthickness" value="29.9-bellows5_eps"/>
@@ -17,7 +17,7 @@
     <position name="bellows5physical_pos" z="bellows5_zpos" unit="mm"/>
     <position name="bellows5flangeUS_pos" z="bellows5flangeUS_zpos" unit="mm"/>
     <position name="bellows5flangeDS_pos" z="bellows5flangeDS_zpos" unit="mm"/>
-
+-->
     <constant name="bellows6_eps" value="0.1"/>
     <constant name="bellows6_IR" value="525+bellows6_eps/2"/>
     <constant name="bellows6flange_length" value="40-bellows6_eps"/>
@@ -56,7 +56,7 @@
     <box name = "SAM_Detectors" x="20" y="13" z="6" unit="mm"/>
     <tube name = "Vacuum_Insert" rmin="0" rmax="80" z="180" deltaphi="360" startphi="0" aunit="deg" lunit= "mm"/>
     <tube name = "SAM_cans" rmin="17.4625" rmax="19.05" z="142" deltaphi="360" startphi="0" aunit="deg" lunit= "mm"/>
-   <!--add bellows -->
+   <!--add bellows 
    <tube
     name="bellows5physical_solid"
     startphi="0" deltaphi="360" aunit="deg"
@@ -69,7 +69,7 @@
     name="bellows5flangeDS_solid"
     startphi="0" deltaphi="360" aunit="deg"
     rmin="bellows5_IR" rmax="bellows5_IR+bellows5flange_Rthickness" z="bellows5flange_length" lunit="mm"/>
-   <!--add bellows -->
+ add bellows -->
    <tube
     name="bellows6physical_solid"
     startphi="0" deltaphi="360" aunit="deg"
@@ -225,7 +225,7 @@
       <auxiliary auxtype="Color" auxvalue="Red"/>
     </volume>
 
-  <volume name="bellows5physical_log">
+<!--  <volume name="bellows5physical_log">
     <materialref ref="SSbellows5"/>
     <solidref ref="bellows5physical_solid"/>
     <auxiliary auxtype="Color" auxvalue="Pink"/>
@@ -240,7 +240,7 @@
     <solidref ref="bellows5flangeDS_solid"/>
     <auxiliary auxtype="Color" auxvalue="Orange"/>
   </volume>
-
+-->
   <volume name="bellows6physical_log">
     <materialref ref="SSbellows6"/>
     <solidref ref="bellows6physical_solid"/>
