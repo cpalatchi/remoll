@@ -35,7 +35,7 @@ void caryn_bellows(int detnum=70){
 	// outfile<<"pz"<<endl;;
 
 
-  for(int runnum=1;runnum<Nruns+1;runnum++){
+  for(int runnum=1;runnum<Nruns+1;runnum++){//1 - Nruns+1
 
     //TString filename="/volatile/halla/moller12gev/palatchi/remoll_bellows_beam/remoll_bellows_beam_100kEv";
     ///volatile/halla/moller12gev/palatchi/remoll_bellows_beam_100M/remoll_bellows_beam_100M_100kEv_001/remollout.root
