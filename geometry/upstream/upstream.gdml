@@ -77,14 +77,15 @@
               z="200/2 + posCOLL2z + COLL2_THICK/2+0.001-50/2-75"/>
 
 
-    <constant name="bellows2_IR" value="126+0.1"/>
-    <constant name="bellows2flange_length" value="12.7"/>
-    <constant name="bellows2flange_Rthickness" value="26.6-0.1"/>
-    <constant name="bellows2_length" value="355.5"/>
+    <constant name="bellows2_eps" value="0.1"/>
+    <constant name="bellows2_IR" value="126+bellows2_eps/2"/>
+    <constant name="bellows2flange_length" value="28.45-bellows2_eps"/>
+    <constant name="bellows2flange_Rthickness" value="26.6-bellows2_eps"/>
+    <constant name="bellows2_length" value="324.1"/>
     <constant name="bellows2_Rthickness" value="11.8"/>
     <constant name="bellows2_zpos" value="4087-4500-(2000)"/>
-    <constant name="bellows2flangeUS_zpos" value="bellows2_zpos - bellows2_length/2 - bellows2flange_length/2 - 0.01"/>
-    <constant name="bellows2flangeDS_zpos" value="bellows2_zpos + bellows2_length/2 + bellows2flange_length/2 + 0.01"/>
+    <constant name="bellows2flangeUS_zpos" value="bellows2_zpos - bellows2_length/2 - bellows2flange_length/2 - bellows2_eps/2"/>
+    <constant name="bellows2flangeDS_zpos" value="bellows2_zpos + bellows2_length/2 + bellows2flange_length/2 + bellows2_eps/2"/>
 
     <position name="bellows2physical_pos" z="bellows2_zpos" unit="mm"/>
     <position name="bellows2flangeUS_pos" z="bellows2flangeUS_zpos" unit="mm"/>
@@ -481,7 +482,7 @@
 
 
 <!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-<!--    <physvol name="bellows2physical_phys">
+    <physvol name="bellows2physical_phys">
       <volumeref ref="bellows2physical_log"/>
       <positionref ref="bellows2physical_pos"/>
     </physvol>
@@ -493,7 +494,7 @@
       <volumeref ref="bellows2flangeDS_log"/>
       <positionref ref="bellows2flangeDS_pos"/>
     </physvol>
--->
+
       <auxiliary auxtype="Alpha" auxvalue="0.1"/>
     </volume>
 
