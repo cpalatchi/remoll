@@ -15,14 +15,14 @@ TFile *fout;
 vector<vector<TH1D*>> hAsym;
 TH1D *hRate,*rRate, *rRateAsym,*r,*sourceZ,*eRateAsym;
 TH2D *hXY,*hXYrate, *hXYrateAsym, *hetheta, *hethetaRate,*hetheta_cut15, *hethetaRate_cut15;
-TH1D *hE,*hERate, *hradius, *hradiusRate, *hphi, *hphiRate, *hthetaP, *hthetaPRate;
+TH1D *hE,*hERate, *hradius, *hradiusRate, *hphi, *hphiRate, *hthetaP, *hthetaPRate, *hz;
 TH2D *hzfront, *hzback, *hrin, *hrout; 
 TH2D *hzfrontRate, *hzbackRate, *hrinRate, *hroutRate; 
 TH2D *hethetaVSz,*hethetaVSz_cut15, *heVSz, *heVSr;
 
 TH1D *hRate_ecut,*rRate_ecut, *rRateAsym_ecut,*r_ecut,*eRateAsym_ecut;
 TH2D *hXY_ecut,*hXYrate_ecut, *hXYrateAsym_ecut, *hetheta_ecut, *hethetaRate_ecut,*hetheta_cut15ecut, *hethetaRate_cut15ecut;
-TH1D *hE_ecut,*hERate_ecut, *hradius_ecut, *hradiusRate_ecut, *hphi_ecut, *hphiRate_ecut, *hthetaP_ecut, *hthetaPRate_ecut;
+TH1D *hE_ecut,*hERate_ecut, *hradius_ecut, *hradiusRate_ecut, *hphi_ecut, *hphiRate_ecut, *hthetaP_ecut, *hthetaPRate_ecut, *hz_ecut;
 TH2D *hzfront_ecut, *hzback_ecut, *hrin_ecut, *hrout_ecut; 
 TH2D *hzfrontRate_ecut, *hzbackRate_ecut, *hrinRate_ecut, *hroutRate_ecut; 
 TH2D *hethetaVSz_ecut,*hethetaVSz_cut15ecut, *heVSz_ecut, *heVSr_ecut;
@@ -30,7 +30,7 @@ TH2D *hethetaVSz_ecut,*hethetaVSz_cut15ecut, *heVSz_ecut, *heVSr_ecut;
 string fin;
 int detnum;
 
-double z1,z2,r1,r2,Emax;
+double z1,z2,r1,r2,Emax,IR,Rthick,L0,z0;
 //      double z1=-2972.48;
 //      double z2=-2647.6;
 //      double r1=100;
@@ -70,52 +70,80 @@ void basicAna(const string& finName = "./remollout.root", int detectornumber = 7
     Emax=11000;
   }
   if(detnum==70){//b1
-    z1=-2810+1;//-2972.48; //1690.00-4500.0 -325/2 -0.48
-    z2=-2810-1;//-2647.6;  //1690.00-4500.0 +325/2 +0.4
-    r1=101+1;//100;//7.8*25.4/2
-    r2=101+30-1;//149;//7.8*25.4/2+50
+    z0=-2810;
+    L0=330;
+    IR=101;
+    Rthick=30;
+    z1=z0-L0/2+1;//-2972.48; //1690.00-4500.0 -325/2 -0.48
+    z2=z0+L0/2-1;//-2647.6;  //1690.00-4500.0 +325/2 +0.4
+    r1=IR+1;//100;//7.8*25.4/2
+    r2=IR+Rthick-1;//149;//7.8*25.4/2+50
     Emax=11000;
   }
   if(detnum==71){//b2
-    z1=-413+1;//4087.00-4500.0-17.2*25.4/2+1;  //<z1 front face
-    z2=-413-1;//4087.00-4500.0+17.2*25.4/2-1;  //>z2 back face
-    r1=126+1;//9.8*25.4/2+1;//<r1 inner ring
-    r2=126+30-1;//9.8*25.4/2+50-1;//>r2 outer ring
+    z0=-413;
+    L0=381;
+    IR=126;
+    Rthick=30;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
   if(detnum==72){//b3
-    z1=4446+1;//8846.00-4500.0-15.7*25.4/2+1;//<z1 front face
-    z2=4446-1;//8846.00-4500.0+15.7*25.4/2-1;//>z2 back face
-    r1=330+1;//25.8*25.4/2+1;//<r1 inner ring
-    r2=330+90-1;//25.8*25.4/2+50-1;//>r2 outer ring
+    z0=4446;
+    L0=508;
+    IR=330;
+    Rthick=90;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
   if(detnum==73){//b4
-    z1=12575+1;//16904.00-4500.0+220-12.82*25.4/2+1;//<z1 front face
-    z2=12575-1;//16904.00-4500.0+220+12.82*25.4/2-1;//>z2 back face
-    r1=648+1;//600+1;//<r1 inner ring
-    r2=648+115-1;//600+50-1;//>r2 outer ring
+    z0=12575;
+    L0=250;
+    IR=648;
+    Rthick=115;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
   if(detnum==74){//b5
-    z1=18930+1;//23314.00-4500.0-5.51*25.4/2+1;//<z1 front face
-    z2=18930-1;//23314.00-4500.0+5.51*25.4/2-1;//>z2 back face
-    r1=500+1;//40.8*25.4/2+1;//<r1 inner ring
-    r2=500+30-1;//40.8*25.4/2+50-1;//>r2 outer ring
+    z0=18930;
+    L0=196;
+    IR=500;
+    Rthick=30;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
   if(detnum==75){//b6
-    z1=19780+1;//24077.00-4500.0-8.06*25.4/2+1;//<z1 front face
-    z2=19780-1;//24077.00-4500.0+8.06*25.4/2-1;//>z2 back face
-    r1=525+1;//41.6*25.4/2+1;//<r1 inner ring
-    r2=525+30-1;//41.6*25.4/2+50-1;//>r2 outer ring
+    z0=19780;
+    L0=180;
+    IR=525;
+    Rthick=30;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
   if(detnum==76){///b7
-    z1=20885+1;//25199.872+530.352/2-24.5*25.4/2+1;//<z1 front face
-    z2=20885-1;//25199.872+530.352/2+24.5*25.4/2-1;//>z2 back face
-    r1=197+1;//16*25.4/2+1;//<r1 inner ring
-    r2=197+52-1;//16*25.4/2+50-1;//>r2 outer ring
+    z0=25385.048;
+    L0=622.3;
+    IR=197;
+    Rthick=52;
+    z1=z0-L0/2+1;
+    z2=z0+L0/2-1;
+    r1=IR+1;
+    r2=IR+Rthick-1;
     Emax=11000;
   }
 
@@ -238,6 +266,7 @@ void initHisto(){
   hXY = new TH2D("hXY","2D hit ditribution;x [m];y [m]",150,-2100,2100,150,-2100,2100);
   hXYrate = new TH2D("hXYrate","rate weighted 2D hit ditribution;x [m];y [m]",150,-2100,2100,150,-2100,2100);
     hE = new TH1D("hE","Energy distribution;E",Emax,0,Emax);
+    hz = new TH1D("hz","z distribution;z",200,z1-1,z2+1);
     hERate = new TH1D("hERate","rate weighteed Energy distribution;E",Emax,0,Emax);
     hphi = new TH1D("hphi","phi distribution;phi[deg]",1000,-180,180);
     hphiRate = new TH1D("hphiRate","rate weighted phi distribution;phi[deg]",1000,-180,180);
@@ -247,10 +276,10 @@ void initHisto(){
     hradiusRate = new TH1D("hradiusRate","rate weighted radius distribution;r[m]",1000,r1-10,r2+10);
     //  hetheta = new TH2D("hetheta","2D hit ditribution;x [m];y [m]",150,-2100,2100,150,-2100,2100);
     //  hethetaRate = new TH2D("hethetaRate","rate weighted 2D hit ditribution;x [m];y [m]",150,-2100,2100,150,-2100,2100);
-    hetheta = new TH2D("hetheta","2D energy-scat angle theta ditribution;E ;theta [deg]",150,0,Emax,150,-180,180);
-    hethetaRate = new TH2D("hethetaRate","rate weighted 2D energy-scat angle theta  ditribution;E ;theta [deg]",150,0,Emax,150,-180,180);
-    hetheta_cut15 = new TH2D("hetheta_cut15","2D energy-scat angle theta ditribution;E ;theta [deg]",150,0,Emax,150,0,15);
-    hethetaRate_cut15 = new TH2D("hethetaRate_cut15","rate weighted 2D energy-scat angle theta  ditribution;E ;theta [deg]",150,0,Emax,150,0,15);
+    hetheta = new TH2D("hetheta","2D energy-scat angle theta ditribution;E ;theta [deg]",Emax,0,Emax,360,-180,180);
+    hethetaRate = new TH2D("hethetaRate","rate weighted 2D energy-scat angle theta  ditribution;E ;theta [deg]",Emax,0,Emax,360,-180,180);
+    hetheta_cut15 = new TH2D("hetheta_cut15","2D energy-scat angle theta ditribution;E ;theta [deg]",Emax,0,Emax,360,0,15);
+    hethetaRate_cut15 = new TH2D("hethetaRate_cut15","rate weighted 2D energy-scat angle theta  ditribution;E ;theta [deg]",Emax,0,Emax,360,0,15);
 
 
     hzfront=new TH2D("hzfront","frontface distribution;x[m];y[m]",150,-r2-10,r2+10,150,-r2-10,r2+10);
@@ -263,11 +292,11 @@ void initHisto(){
     hrinRate=new TH2D("hrinRate","rate weighted inner radius distribution;z[m];phi[deg]",150,z1,z2,150,-180,180);
     hroutRate=new TH2D("hroutRate","rate weighted outer radius distribution;z[m];phi[deg]",150,z1,z2,150,-180,180);
 
-    hethetaVSz = new TH2D("hethetaVSz","2D z-scat angle theta ditribution vs z;z[m] ;theta [deg]",150,z1-10,z2+10,150,-180,180);
-    hethetaVSz_cut15 = new TH2D("hethetaVSz_cut15","2D z-scat angle theta ditribution vs z;z[m] ;theta [deg]",150,z1-10,z2+10,150,0,15);
+    hethetaVSz = new TH2D("hethetaVSz","2D z-scat angle theta ditribution vs z;z[m] ;theta [deg]",150,z1-10,z2+10,360,-180,180);
+    hethetaVSz_cut15 = new TH2D("hethetaVSz_cut15","2D z-scat angle theta ditribution vs z;z[m] ;theta [deg]",150,z1-10,z2+10,360,0,15);
 
-    heVSz = new TH2D("heVSz","2D energy ditribution vs z;z[m] ;E",150,z1-10,z2+10,150,0,Emax);
-    heVSr = new TH2D("heVSr","2D energy ditribution vs r;r[m] ;E",150,r1-10,r2+10,150,0,Emax);
+    heVSz = new TH2D("heVSz","2D energy ditribution vs z;z[m] ;E",150,z1-10,z2+10,Emax,0,Emax);
+    heVSr = new TH2D("heVSr","2D energy ditribution vs r;r[m] ;E",150,r1-10,r2+10,Emax,0,Emax);
 
 
 
@@ -278,6 +307,7 @@ void initHisto(){
   hXY_ecut = new TH2D("hXY_ecut","2D hit ditribution >10MeV;x [m];y [m]",150,-2100,2100,150,-2100,2100);
   hXYrate_ecut = new TH2D("hXYrate_ecut","rate weighted 2D hit ditribution >10MeV;x [m];y [m]",150,-2100,2100,150,-2100,2100);
     hE_ecut = new TH1D("hE_ecut","Energy distribution >10MeV;E",Emax,10,Emax);
+    hz_ecut = new TH1D("hz_ecut","z distribution >10MeV ;z",200,z1-1,z2+1);
     hERate_ecut = new TH1D("hERate_ecut","rate weighteed Energy distribution >10MeV;E",Emax,10,Emax);
     hphi_ecut = new TH1D("hphi_ecut","phi distribution >10MeV;phi[deg]",1000,-180,180);
     hphiRate_ecut = new TH1D("hphiRate_ecut","rate weighted phi distribution >10MeV;phi[deg]",1000,-180,180);
@@ -285,10 +315,10 @@ void initHisto(){
     hthetaPRate_ecut = new TH1D("hthetaPRate_ecut","rate weighted scat angle theta distribution >10MeV;theta[deg]",1000,-180,180);
     hradius_ecut = new TH1D("hradius_ecut","radius distribution >10MeV;r[m]",1000,r1-10,r2+10);
     hradiusRate_ecut = new TH1D("hradiusRate_ecut","rate weighted radius distribution >10MeV;r[m]",1000,r1-10,r2+10);
-    hetheta_ecut = new TH2D("hetheta_ecut","2D energy-scat angle theta ditribution >10MeV;E ;theta [deg]",150,10,Emax,150,-180,180);
-    hethetaRate_ecut = new TH2D("hethetaRate_ecut","rate weighted 2D energy-scat angle theta  ditribution >10MeV;E ;theta [deg]",150,10,Emax,150,-180,180);
-    hetheta_cut15ecut = new TH2D("hetheta_cut15ecut","2D energy-scat angle theta ditribution >10MeV;E ;theta [deg]",150,10,Emax,150,0,15);
-    hethetaRate_cut15ecut = new TH2D("hethetaRate_cut15ecut","rate weighted 2D energy-scat angle theta  ditribution >10MeV;E ;theta [deg]",150,10,Emax,150,0,15);
+    hetheta_ecut = new TH2D("hetheta_ecut","2D energy-scat angle theta ditribution >10MeV;E ;theta [deg]",Emax,10,Emax,360,-180,180);
+    hethetaRate_ecut = new TH2D("hethetaRate_ecut","rate weighted 2D energy-scat angle theta  ditribution >10MeV;E ;theta [deg]",Emax,10,Emax,360,-180,180);
+    hetheta_cut15ecut = new TH2D("hetheta_cut15ecut","2D energy-scat angle theta ditribution >10MeV;E ;theta [deg]",Emax,10,Emax,360,0,15);
+    hethetaRate_cut15ecut = new TH2D("hethetaRate_cut15ecut","rate weighted 2D energy-scat angle theta  ditribution >10MeV;E ;theta [deg]",Emax,10,Emax,360,0,15);
 
 
     hzfront_ecut=new TH2D("hzfront_ecut","frontface distribution >10MeV;x[m];y[m]",150,-r2-10,r2+10,150,-r2-10,r2+10);
@@ -301,11 +331,11 @@ void initHisto(){
     hrinRate_ecut=new TH2D("hrinRate_ecut","rate weighted inner radius distribution >10MeV;z[m];phi[deg]",150,z1,z2,150,-180,180);
     hroutRate_ecut=new TH2D("hroutRate_ecut","rate weighted outer radius distribution >10MeV;z[m];phi[deg]",150,z1,z2,150,-180,180);
 
-    hethetaVSz_ecut = new TH2D("hethetaVSz_ecut","2D z-scat angle theta ditribution vs z >10Mev;z[m] ;theta [deg]",150,z1-10,z2+10,150,-180,180);
-    hethetaVSz_cut15ecut = new TH2D("hethetaVSz_cut15ecut","2D z-scat angle theta ditribution vs z >10MeV;z[m] ;theta [deg]",150,z1-10,z2+10,150,0,15);
+    hethetaVSz_ecut = new TH2D("hethetaVSz_ecut","2D z-scat angle theta ditribution vs z >10Mev;z[m] ;theta [deg]",150,z1-10,z2+10,360,-180,180);
+    hethetaVSz_cut15ecut = new TH2D("hethetaVSz_cut15ecut","2D z-scat angle theta ditribution vs z >10MeV;z[m] ;theta [deg]",150,z1-10,z2+10,360,0,15);
 
-    heVSz_ecut = new TH2D("heVSz_ecut","2D energy ditribution vs z >10MeV;z[m] ;E",150,z1-10,z2+10,150,10,Emax);
-    heVSr_ecut = new TH2D("heVSr_ecut","2D energy ditribution vs r >10MeV;r[m] ;E",150,r1-10,r2+10,150,10,Emax);
+    heVSz_ecut = new TH2D("heVSz_ecut","2D energy ditribution vs z >10MeV;z[m] ;E",150,z1-10,z2+10,Emax,10,Emax);
+    heVSr_ecut = new TH2D("heVSr_ecut","2D energy ditribution vs r >10MeV;r[m] ;E",150,r1-10,r2+10,Emax,10,Emax);
 
 
 
@@ -401,6 +431,8 @@ long processOne(string fnm){
       hE->Fill(hit->at(j).e);     	
       hERate->Fill(hit->at(j).e,rate);     	
 
+      hz->Fill(hit->at(j).z);     	
+
       //get angles
       //=(180/PI())*ACOS(x/SQRT(x^2+y^2))*y/ABS(y)
       //      myr = sqrt(pow(hit->at(j).x,2)+pow(hit->at(j).y,2)+pow(hit->at(j).z,2));
@@ -474,6 +506,8 @@ long processOne(string fnm){
 
       hE_ecut->Fill(hit->at(j).e);     	
       hERate_ecut->Fill(hit->at(j).e,rate);     	
+
+      hz_ecut->Fill(hit->at(j).z);     	
 
       //get angles
       myr = hit->at(j).r;// (just x,y)
@@ -557,9 +591,9 @@ void writeOutput(){
   hXYrate->Write();
   
   hE->Write();
-
   hERate->Scale(1./nFiles);
   hERate->Write();
+  hz->Write();
   hphi->Write();
   hphiRate->Scale(1./nFiles);
   hphiRate->Write();
@@ -616,6 +650,7 @@ void writeOutput(){
 
   hERate_ecut->Scale(1./nFiles);
   hERate_ecut->Write();
+  hz_ecut->Write();
   hphi_ecut->Write();
   hphiRate_ecut->Scale(1./nFiles);
   hphiRate_ecut->Write();
