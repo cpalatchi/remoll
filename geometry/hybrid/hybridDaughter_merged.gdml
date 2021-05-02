@@ -69,27 +69,29 @@
     <constant name="boxDSMother_height" value="2700"/>
     <constant name="boxDSMother_length" value="7865.68 + 2*950 + 900+5300.59+8.73"/> 
 
-    <constant name="bellows3_IR" value="330+0.1"/>
-    <constant name="bellows3flange_length" value="25.4"/>
-    <constant name="bellows3flange_Rthickness" value="88.5-0.1"/>
-    <constant name="bellows3_length" value="457.1"/>
+    <constant name="bellows3_eps" value="0.35"/>
+    <constant name="bellows3_IR" value="330+bellows3_eps/2"/>
+    <constant name="bellows3flange_length" value="44.45-bellows3_eps"/>
+    <constant name="bellows3flange_Rthickness" value="88.5-bellows3_eps"/>
+    <constant name="bellows3_length" value="419.4"/>
     <constant name="bellows3_Rthickness" value="31.0"/>
     <constant name="bellows3_zpos" value="8946-4500-(11016.865-8.73/2)"/>
-    <constant name="bellows3flangeUS_zpos" value="bellows3_zpos - bellows3_length/2 - bellows3flange_length/2 - 0.01"/>
-    <constant name="bellows3flangeDS_zpos" value="bellows3_zpos + bellows3_length/2 + bellows3flange_length/2 + 0.01"/>
+    <constant name="bellows3flangeUS_zpos" value="bellows3_zpos - bellows3_length/2 - bellows3flange_length/2 - bellows3_eps/2"/>
+    <constant name="bellows3flangeDS_zpos" value="bellows3_zpos + bellows3_length/2 + bellows3flange_length/2 + bellows3_eps/2"/>
 
     <position name="bellows3physical_pos" z="bellows3_zpos" unit="mm"/>
     <position name="bellows3flangeUS_pos" z="bellows3flangeUS_zpos" unit="mm"/>
     <position name="bellows3flangeDS_pos" z="bellows3flangeDS_zpos" unit="mm"/>
 
-    <constant name="bellows4_IR" value="648.1+0.1"/>
-    <constant name="bellows4flange_length" value="50.75"/>
-    <constant name="bellows4flange_Rthickness" value="114.3-0.1"/>
-    <constant name="bellows4_length" value="148.4"/>
+    <constant name="bellows4_eps" value="0.1"/>
+    <constant name="bellows4_IR" value="648+bellows4_eps/2"/>
+    <constant name="bellows4flange_length" value="50.75-bellows4_eps"/>
+    <constant name="bellows4flange_Rthickness" value="114.3-bellows4_eps"/>
+    <constant name="bellows4_length" value="148.0"/>
     <constant name="bellows4_Rthickness" value="84.1"/>
     <constant name="bellows4_zpos" value="17075-4500-(11016.865-8.73/2)"/>
-    <constant name="bellows4flangeUS_zpos" value="bellows4_zpos - bellows4_length/2 - bellows4flange_length/2 - 0.01"/>
-    <constant name="bellows4flangeDS_zpos" value="bellows4_zpos + bellows4_length/2 + bellows4flange_length/2 + 0.01"/>
+    <constant name="bellows4flangeUS_zpos" value="bellows4_zpos - bellows4_length/2 - bellows4flange_length/2 - bellows4_eps/2"/>
+    <constant name="bellows4flangeDS_zpos" value="bellows4_zpos + bellows4_length/2 + bellows4flange_length/2 + bellows4_eps/2"/>
 
     <position name="bellows4physical_pos" z="bellows4_zpos" unit="mm"/>
     <position name="bellows4flangeUS_pos" z="bellows4flangeUS_zpos" unit="mm"/>
@@ -640,7 +642,7 @@
       -->
 
 <!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-<!--    <physvol name="bellows3physical_phys">
+    <physvol name="bellows3physical_phys">
       <volumeref ref="bellows3physical_log"/>
       <positionref ref="bellows3physical_pos"/>
     </physvol>
@@ -665,7 +667,7 @@
       <volumeref ref="bellows4flangeDS_log"/>
       <positionref ref="bellows4flangeDS_pos"/>
     </physvol>
--->
+
 
       <physvol name="collar1">
         <volumeref ref="logicCollar1"/>
