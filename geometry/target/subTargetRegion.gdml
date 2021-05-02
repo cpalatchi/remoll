@@ -295,7 +295,7 @@
       </physvol>
 
 <!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-    <physvol name="bellows1physical_phys">
+<!--    <physvol name="bellows1physical_phys">
       <volumeref ref="bellows1physical_log"/>
       <positionref ref="bellows1physical_pos"/>
     </physvol>
@@ -307,7 +307,7 @@
       <volumeref ref="bellows1flangeDS_log"/>
       <positionref ref="bellows1flangeDS_pos"/>
     </physvol>
-
+-->
 
       <physvol>
 	<volumeref ref="targetUSBeamPipe"/>
