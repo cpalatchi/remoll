@@ -481,7 +481,7 @@
 
 
 <!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-    <physvol name="bellows2physical_phys">
+<!--    <physvol name="bellows2physical_phys">
       <volumeref ref="bellows2physical_log"/>
       <positionref ref="bellows2physical_pos"/>
     </physvol>
@@ -493,7 +493,7 @@
       <volumeref ref="bellows2flangeDS_log"/>
       <positionref ref="bellows2flangeDS_pos"/>
     </physvol>
-
+-->
       <auxiliary auxtype="Alpha" auxvalue="0.1"/>
     </volume>
 
