@@ -1,5 +1,5 @@
 <!-- 
-first matrix contains bearings dimensions (all 48 bearings are the same so only one row)
+first matrix contains tierodend dimensions (all are the same so only one row)
 IR(mm) OR(mm) length(mm) -->
 <matrix name = "tierodends_m_dim" coldim="3" values="
 6.4 12.0 15.9"/>
