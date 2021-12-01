@@ -668,8 +668,13 @@
     </physvol>
 
     <!-- ferrous materials --> 
-    <physvol>
+    <physvol name="bearings_phys">
       <file name="ferrous/bearings/bearingsParallel.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
+
+    <physvol name="tierodends_phys">
+      <file name="ferrous/tierodends/tierodendsParallel.gdml"/>
       <positionref ref="ferrous_pos"/>
     </physvol>
 

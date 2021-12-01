@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE gdml [
+<!ENTITY matrices SYSTEM "../../matrices.xml">
 <!ENTITY bearings_matrix SYSTEM "bearings_matrix.xml">
 <!ENTITY bearings_positions SYSTEM "bearings_positions.xml">
 <!ENTITY bearings_rotations SYSTEM "bearings_rotations.xml">
@@ -14,13 +15,17 @@
       xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <define>
+ &matrices;
  &bearings_matrix;
  &bearings_positions;
  &bearings_rotations;
 </define>
 
+&materials;
+<!--
 <materials>
 </materials>
+-->
 
 <solids>
  &bearings_solids;
