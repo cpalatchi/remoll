@@ -667,6 +667,12 @@
       <position  name="HallExit_pos" unit="mm" x="0" y="0" z="26200"/>
     </physvol>
 
+    <!-- ferrous materials --> 
+    <physvol>
+      <file name="ferrous/bearings/bearingsParallel.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
+
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
 </structure>

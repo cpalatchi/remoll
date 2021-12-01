@@ -86,6 +86,7 @@
     </physvol>
     -->
 
+
     <!-- electronics hut for left side --> 
     <physvol>
       <file name="huts/lefthut.gdml"/>
@@ -116,6 +117,14 @@
       <file name="pion/pionDetectorSystem.gdml"/>
       <positionref ref="pionDetectorSystemFaceUS"/>
     </physvol>-->
+
+    <!-- ferrous materials --> 
+    <physvol>
+      <file name="ferrous/bearings/bearings.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
+
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
