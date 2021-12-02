@@ -678,6 +678,12 @@
       <positionref ref="ferrous_pos"/>
     </physvol>
 
+    <physvol name="driftpipemount_phys">
+      <file name="ferrous/driftpipemount/driftpipemountParallel.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
+
+
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
 </structure>
