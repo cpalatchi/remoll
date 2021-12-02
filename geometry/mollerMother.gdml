@@ -61,7 +61,9 @@
       <file name="beampipe/premoller/beampipeRaster.gdml"/>
     </physvol>
 
-    <!--<physvol>
+  <!--turned on to see if ferrous bellows ok here-->
+  <!--
+    <physvol>
       <file name="beampipe/downstream/beampipeDSMother.gdml"/>
     </physvol>-->
 
