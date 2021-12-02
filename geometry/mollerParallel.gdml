@@ -683,6 +683,11 @@
       <positionref ref="ferrous_pos"/>
     </physvol>
 
+    <physvol name="pivot_phys">
+      <file name="ferrous/pivot/pivotParallel.gdml"/>
+      <positionref ref="pivot_pos"/>
+    </physvol>
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
