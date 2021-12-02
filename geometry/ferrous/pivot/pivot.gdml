@@ -36,8 +36,7 @@
   <volumeref ref="pivot_logic"/>
 <position x="pivot_m[4]" y="pivot_m[5]" z="pivot_m[6]" unit="mm"/>
   <positionref ref="pivot_position1"/>
- </physvol>
--->
+ </physvol>-->
 </structure>
 
 <setup name="pivot_setup" version="1.0">

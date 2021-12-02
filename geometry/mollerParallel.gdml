@@ -688,6 +688,11 @@
       <positionref ref="pivot_pos"/>
     </physvol>
 
+    <physvol name="bellows_phys">
+      <file name="ferrous/bellows/bellowsParallel.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>

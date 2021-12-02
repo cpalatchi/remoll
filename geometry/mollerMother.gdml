@@ -140,6 +140,11 @@
      <positionref ref="pivot_pos"/>
     </physvol>
 
+    <physvol name="bellows_PV">
+      <file name="ferrous/bellows/bellows.gdml"/>
+     <positionref ref="ferrous_pos"/>
+    </physvol>
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
