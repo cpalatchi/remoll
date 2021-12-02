@@ -56,11 +56,11 @@
       <positionref ref="hybridCenter"/>
     </physvol>
 
-    <!-- Downstream beampipe -->
     <physvol>
       <file name="beampipe/premoller/beampipeRaster.gdml"/>
     </physvol>
 
+    <!-- Downstream beampipe -->
   <!--turned on to see if ferrous bellows ok here-->
   <!--
     <physvol>
