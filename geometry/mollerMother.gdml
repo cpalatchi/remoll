@@ -147,6 +147,11 @@
      <positionref ref="ferrous_pos"/>
     </physvol>
 
+    <physvol name="gemsupport_PV">
+      <file name="ferrous/gemsupport/gemsupport.gdml"/>
+     <positionref ref="ferrous_pos"/>
+    </physvol>
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>

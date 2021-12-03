@@ -693,6 +693,10 @@
       <positionref ref="ferrous_pos"/>
     </physvol>
 
+    <physvol name="gemsupport_phys">
+      <file name="ferrous/gemsupport/gemsupportParallel.gdml"/>
+      <positionref ref="ferrous_pos"/>
+    </physvol>
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
