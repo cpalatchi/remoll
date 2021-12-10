@@ -698,6 +698,12 @@
       <positionref ref="ferrous_pos"/>
     </physvol>
 
+    <physvol name="rebarus_phys">
+      <file name="ferrous/rebarus/rebarusParallel.gdml"/>
+      <positionref ref="rebarus_pos"/>
+    </physvol>
+
+
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
 </structure>

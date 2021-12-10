@@ -70,4 +70,5 @@
 <!-- ferrous materials positon -->
 <position name="ferrous_pos" x="0.0" y="0.0" z="0.0" unit="mm"/>
 <position name="pivot_pos" x="0.0" y="-542.9" z="1712.6" unit="mm"/>
+<position name="rebarus_pos" x="0.0" y="-942" z="2475-4500" unit="mm"/>
 
