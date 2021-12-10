@@ -703,6 +703,11 @@
       <positionref ref="rebarus_pos"/>
     </physvol>
 
+    <physvol name="rebards_phys">
+      <file name="ferrous/rebards/rebardsParallel.gdml"/>
+      <positionref ref="rebards_pos"/>
+    </physvol>
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>

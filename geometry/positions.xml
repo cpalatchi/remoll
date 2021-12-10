@@ -71,4 +71,5 @@
 <position name="ferrous_pos" x="0.0" y="0.0" z="0.0" unit="mm"/>
 <position name="pivot_pos" x="0.0" y="-542.9" z="1712.6" unit="mm"/>
 <position name="rebarus_pos" x="0.0" y="-942" z="2475-4500" unit="mm"/>
+<position name="rebards_pos" x="0" y="-420 + 127.65/2 + 18 + 12.43/2" z="4005-250/2- 2000 +2000" unit="mm"/>
 
