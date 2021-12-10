@@ -42,7 +42,8 @@
 # Mainz test energy
 #/remoll/beamene 855 MeV
 
-/remoll/evgen/set elastic
+/remoll/evgen/beam/origin 0 0 -7.5 m
+#/remoll/evgen/set elastic
 #/remoll/evgen/thcommin 30.0 deg
 #/remoll/evgen/thcommax 150.0 deg
 #/remoll/evgen/set elastic 
