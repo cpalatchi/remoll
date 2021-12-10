@@ -121,7 +121,7 @@
     </physvol>-->
 
     <!-- ferrous materials --> 
-    <physvol name="bearings_PV">
+ <!-- <physvol name="bearings_PV">
       <file name="ferrous/bearings/bearings.gdml"/>
       <positionref ref="ferrous_pos"/>
     </physvol>
@@ -137,7 +137,6 @@
     </physvol>
 
     <physvol name="pivot_PV">
-<!--    <physvol>-->
       <file name="ferrous/pivot/pivot.gdml"/>
      <positionref ref="pivot_pos"/>
     </physvol>
@@ -151,7 +150,7 @@
       <file name="ferrous/gemsupport/gemsupport.gdml"/>
      <positionref ref="ferrous_pos"/>
     </physvol>
-
+-->
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
