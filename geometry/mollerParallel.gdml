@@ -410,7 +410,7 @@
   <volume name="ParallelWorld_logical">
     <materialref ref="G4_Galactic"/>
     <solidref ref="parallel_solid"/>
-<!--
+
     <physvol name="tgtPbCollar_phys">
       <volumeref ref="tgtPbCollar_log"/>
       <position  name="tgtPbCollar_pos" unit="mm" x="0" y="0" z="-1449+0.5"/>
@@ -626,6 +626,7 @@
       <position name="Collar2Exit_pos" unit="mm" x="0" y="0" z="19182.69+150+0.6"/>
     </physvol>
 
+    <!-- Tracking planes -->
     <physvol name="trackingDetectorVirtualPlaneFront1_phys">
       <volumeref ref="gemVirtualPlane1_log"/>
       <positionref ref="trackingDetectorVirtualPlaneFront1_pos"/>
@@ -642,17 +643,20 @@
       <volumeref ref="gemVirtualPlane4_log"/>
       <positionref ref="trackingDetectorVirtualPlaneBack2_pos"/>
     </physvol>
--->    
+    
+    <!-- Main detector plane -->
     <physvol name="mainDetectorVirtualPlane_phys">
       <volumeref ref="mainDetectorVirtualPlane_log"/>
       <positionref ref="mainDetectorVirtualPlane_pos"/>
     </physvol>
-<!--
+
+    <!-- Main detector plane -->
     <physvol name="showerMaxVir_phys">
       <volumeref ref="showerMaxVir_log"/>
       <positionref ref="showerMaxDetectorFaceUS"/>
     </physvol>
 
+    <!-- Pion detector plane -->
     <physvol name="pionDetectorVirtualPlane_phys">
       <volumeref ref="pionDetectorVirtualPlane_log"/>
       <positionref ref="pionDetectorVirtualPlane_pos"/>
@@ -663,7 +667,8 @@
       <position  name="HallExit_pos" unit="mm" x="0" y="0" z="26200"/>
     </physvol>
 
-    <physvol name="bearings_phys">
+    <!-- ferrous materials --> 
+<!--    <physvol name="bearings_phys">
       <file name="ferrous/bearings/bearingsParallel.gdml"/>
       <positionref ref="ferrous_pos"/>
     </physvol>
