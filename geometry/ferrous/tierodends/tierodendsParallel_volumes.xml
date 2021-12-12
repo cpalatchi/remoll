@@ -3,5 +3,5 @@
     <solidref ref="tierodends_union"/> 
 <!--    <solidref ref="tierodends_submultiUnion"/> -->
     <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-    <auxiliary auxtype="DetNo" auxvalue="1001"/>
+    <auxiliary auxtype="DetNo" auxvalue="1009"/>
   </volume>
