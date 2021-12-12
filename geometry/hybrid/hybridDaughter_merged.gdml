@@ -264,7 +264,7 @@
       <materialref ref="G4_Fe"/>
       <solidref ref="solDSTracker"/>
       <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-      <auxiliary auxtype="DetNo" auxvalue="92"/>
+      <auxiliary auxtype="DetNo" auxvalue="920"/>
     </volume>
 
     <volume name="logicCollar1">
