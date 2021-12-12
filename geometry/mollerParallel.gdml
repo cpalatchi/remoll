@@ -668,7 +668,7 @@
     </physvol>
 
     <!-- ferrous materials --> 
-<!--    <physvol name="bearings_phys">
+    <physvol name="bearings_phys">
       <file name="ferrous/bearings/bearingsParallel.gdml"/>
       <positionref ref="ferrous_pos"/>
     </physvol>
@@ -714,7 +714,7 @@
       <positionref ref="detectorsupport_pos"/>
     </physvol>
 
--->
+
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
 </structure>
