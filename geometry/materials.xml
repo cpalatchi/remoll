@@ -257,6 +257,12 @@
       <atom unit="g/mole" value="95.95"/>
    </material>
 
+   <material Z="24" name="Chromium" state="solid">
+      <D unit="g/cm3" value="7.19"/>
+      <atom unit="g/mole" value="51.996"/>
+   </material>
+
+
    <material Z="13" name="Aluminum" state="solid">
       <D unit="g/cm3" value="2.7"/>
       <atom unit="g/mole" value="26.981"/>
@@ -447,7 +453,7 @@
   <material name="Inconel625" state="solid">
     <D value="8.442" unit="g/cm3"/>
     <fraction n="0.7" ref="Nickel"/>
-    <fraction n="0.2" ref="Copper"/>
+    <fraction n="0.2" ref="Chromium"/>
     <fraction n="0.1" ref="Molybdenum"/>
   </material>
 
