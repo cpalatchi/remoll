@@ -6,20 +6,20 @@
 
 /remoll/SD/disable_all
 
-/remoll/SD/enable 1
-/remoll/SD/detect lowenergyneutral 1
-/remoll/SD/detect secondaries 1
-/remoll/SD/detect boundaryhits 1
+#/remoll/SD/enable 1
+#/remoll/SD/detect lowenergyneutral 1
+#/remoll/SD/detect secondaries 1
+#/remoll/SD/detect boundaryhits 1
 
 /remoll/SD/enable 2
 /remoll/SD/detect lowenergyneutral 2
 /remoll/SD/detect secondaries 2
 /remoll/SD/detect boundaryhits 2
 
-/remoll/SD/enable 3
-/remoll/SD/detect lowenergyneutral 3
-/remoll/SD/detect secondaries 3
-/remoll/SD/detect boundaryhits 3
+#/remoll/SD/enable 3
+#/remoll/SD/detect lowenergyneutral 3
+#/remoll/SD/detect secondaries 3
+#/remoll/SD/detect boundaryhits 3
 
 
 ## External Generator
@@ -72,7 +72,7 @@
 # /remoll/evgen/external/zOffset -8790
 # /remoll/filename o_tid_conf14_5704_pzL0.root
 
-/remoll/evgen/external/file analysis/o_conf14_pzL0_remollSkimTree.root 
+/remoll/evgen/external/file rootfiles/o_conf14_pzL0_remollSkimTree.root 
 /remoll/evgen/external/detid 5705
 /remoll/evgen/external/zOffset -10690
 /remoll/filename o_tid_conf14_5705_pzL0.root
@@ -99,5 +99,6 @@
 
 ## this shold be the same number of events as the skim output
 ### if you want your rate calculation to be ok for non-beam generators
-/run/beamOn 534453
+/run/beamOn 50
+#534453
 
