@@ -7,8 +7,15 @@
 /remoll/physlist/parallel/enable 
 
 
-/remoll/physlist/register QGSP_BERT_HP
+#/remoll/physlist/register QGSP_BERT_HP
 /run/initialize
+
+#/remoll/addfield map_directory/V2DSg.9.75cm.parallel.txt
+#/remoll/addfield map_directory/V2U.1a.50cm.parallel.txt
+
+/remoll/addfield map_directory/V2DSg.9.75cm.txt
+/remoll/addfield map_directory/V2U.1a.50cm.txt
+
 
 /remoll/SD/disable_all
 
@@ -23,6 +30,11 @@
 /remoll/SD/detect secondaries 5705
 /remoll/SD/detect boundaryhits 5705
 
+/remoll/SD/enable 1015
+/remoll/SD/detect lowenergyneutral 1015
+/remoll/SD/detect secondaries 1015
+/remoll/SD/detect boundaryhits 1015
+
 /remoll/SD/enable 28
 /remoll/SD/detect lowenergyneutral 28
 /remoll/SD/detect secondaries 28
@@ -31,8 +43,8 @@
 
 ## External Generator
 /remoll/evgen/set external
-/remoll/evgen/copyRate 1
-/remoll/evgen/external/startEvent 0
+#/remoll/evgen/copyRate 1
+#/remoll/evgen/external/startEvent 0
 
 #/remoll/evgen/external/file rootfiles/o_conf14_pzL0_remollSkimTree.root 
 #/remoll/evgen/external/detid 5705
@@ -42,12 +54,11 @@
 
 /remoll/evgen/external/file rootfiles/o_remollSkimTree1015.root
 /remoll/evgen/external/detid 1015
-/remoll/evgen/external/zOffset 1
+/remoll/evgen/external/zOffset 0.001
 /remoll/filename o_test_1015.root
 
+/remoll/kryptonite/enable
 
-## this shold be the same number of events as the skim output
-### if you want your rate calculation to be ok for non-beam generators
+
 /run/beamOn 5000
-#534453
 
