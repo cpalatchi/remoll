@@ -7,9 +7,9 @@
 /remoll/addfield map_directory/V2DSg.9.75cm.parallel.txt
 /remoll/addfield map_directory/V2U.1a.50cm.parallel.txt
 /remoll/evgen/set external
-/remoll/evgen/external/file  /w/moller12gev-sciwork18/palatchi/moller/bellowsgenerators/b1.root
+/remoll/evgen/external/file  /work/halla/moller12gev/palatchi/moller/bellowsgenerators/b1.root
 /remoll/evgen/external/detid 70
-/remoll/evgen/external/zOffset 1 # backoff trajectory by 1 mm. Don't back off too much though. Unit is in mm.
+/remoll/evgen/external/zOffset 0.001 # backoff trajectory by 1 mm. Don't back off too much though. Unit is in mm.
 /remoll/SD/disable_all
 /remoll/SD/enable 70
 /remoll/SD/detect lowenergyneutral 70
@@ -21,6 +21,7 @@
 /remoll/SD/detect boundaryhits 28
 /remoll/kryptonite/volume lefthut_Det_inside_logic
 /remoll/kryptonite/enable
-/remoll/filename remollout70.root
-/run/beamOn 42353     #If this number is bigger than the exact number of entries in b1.root, the simulation will loop over from the first event again. 
+/remoll/filename remollout_test70.root
+/run/beamOn 50
+#/run/beamOn 42353     #If this number is bigger than the exact number of entries in b1.root, the simulation will loop over from the first event again. 
 
