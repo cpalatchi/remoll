@@ -27,6 +27,7 @@
 #include "remollGenpInelastic.hh"
 #include "remollGenPion.hh"
 #include "remollGenBeam.hh"
+#include "remollGenTF1.hh"
 #include "remollGen12CElastic.hh"
 #include "remollGenFlat.hh"
 #include "remollGenExternal.hh"
@@ -35,7 +36,7 @@
 #include "remollGenHyperon.hh"
 
 remollPrimaryGeneratorAction::remollPrimaryGeneratorAction()
-: fEventGen(0),fPriGen(0),fParticleGun(0),fBeamTarg(0),fEvent(0),fMessenger(0),fEffCrossSection(0)
+  : fEventGen(0),fPriGen(0),fParticleGun(0),fBeamTarg(0),fEvent(0),fMessenger(0),fRateCopy(0),fEffCrossSection(0)
 {
     static bool has_been_warned = false;
     if (! has_been_warned) {
@@ -52,6 +53,7 @@ remollPrimaryGeneratorAction::remollPrimaryGeneratorAction()
     fEvGenMap["pion"] = new remollGenPion();
     fEvGenMap["beam"] = new remollGenBeam();
     fEvGenMap["flat"] = new remollGenFlat();
+    fEvGenMap["TF1"] = new remollGenTF1();
     fEvGenMap["elasticAl"] = new remollGenAl(0);
     fEvGenMap["quasielasticAl"] = new remollGenAl(1);
     fEvGenMap["inelasticAl"] = new remollGenAl(2);
@@ -81,6 +83,7 @@ remollPrimaryGeneratorAction::remollPrimaryGeneratorAction()
     fEvGenMessenger = new G4GenericMessenger(this,"/remoll/evgen/","Remoll event generator properties");
     fEvGenMessenger->DeclareMethod("set",&remollPrimaryGeneratorAction::SetGenerator,"Select physics generator");
     fEvGenMessenger->DeclarePropertyWithUnit("sigma","picobarn",fEffCrossSection,"Set effective cross section");
+    fEvGenMessenger->DeclareProperty("copyRate",fRateCopy,"ExtGen: copy rate from previous sim");
 }
 
 remollPrimaryGeneratorAction::~remollPrimaryGeneratorAction()
@@ -131,6 +134,8 @@ void remollPrimaryGeneratorAction::SetGenerator(G4String& genname)
     if (fEventGen) {
       fEventGen->SetBeamTarget(fBeamTarg);
     }
+
+    remollRun::GetRunData()->SetGenName(genname.data());
 }
 
 void remollPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
@@ -201,13 +206,13 @@ void remollPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     // Get number of thrown events
     G4double nthrown = remollRun::GetRunData()->GetNthrown();
 
-    // Calculate rate
-    SamplingType_t sampling_type = fEventGen->GetSamplingType();
-    if (fEvent->fRate == 0) { // If the rate is set to 0 then calculate it using the cross section
-        fEvent->fRate  = fEvent->fEffXs * fBeamTarg->GetEffLumin(sampling_type) / nthrown;
 
-    } else { // For LUND - calculate rate and cross section
-        fEvent->fEffXs = fEvent->fRate * nthrown / fBeamTarg->GetEffLumin(sampling_type);
+    // Calculate rate
+    if (fEvent->fRate == 0) { // If the rate is set to 0 then calculate it using the cross section
+        fEvent->fRate  = fEvent->fEffXs * fBeamTarg->GetEffLumin() / nthrown;
+
+    } else if(!fRateCopy){ // For LUND - calculate rate and cross section
+        fEvent->fEffXs = fEvent->fRate * nthrown / fBeamTarg->GetEffLumin();
         fEvent->fRate  = fEvent->fRate / nthrown;
     }
 

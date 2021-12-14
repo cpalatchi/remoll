@@ -82,12 +82,8 @@ remollBeamTarget::~remollBeamTarget()
     delete fMS;
 }
 
-G4double remollBeamTarget::GetEffLumin(SamplingType_t sampling_type)
-{
-    if (sampling_type == kNoTargetVolume)
-        return fBeamCurrent / (e_SI*coulomb); // no length, just frequency
-    else
-        return fBeamCurrent / (e_SI*coulomb) * fEffectiveMaterialLength;
+G4double remollBeamTarget::GetEffLumin(){
+    return fEffectiveMaterialLength*fBeamCurrent/(e_SI*coulomb);
 }
 
 void remollBeamTarget::PrintTargetInfo()
@@ -180,13 +176,13 @@ void remollBeamTarget::SetActiveTargetVolume(G4String name)
 ////////////////////////////////////////////////////////////////////////////////////////////
 //  Sampling functions
 
-remollVertex remollBeamTarget::SampleVertex(SamplingType_t sampling_type)
+remollVertex remollBeamTarget::SampleVertex(SampType_t samp)
 {
     // Create vertex
     remollVertex vertex;
 
     // No sampling required
-    if (sampling_type == kNoTargetVolume) {
+    if (samp == kNoTargetVolume) {
       return vertex;
     }
 
@@ -212,7 +208,7 @@ remollVertex remollBeamTarget::SampleVertex(SamplingType_t sampling_type)
 
     // Figure out how far along the target we got
     G4double total_effective_length = 0;
-    switch (sampling_type) {
+    switch( samp ){
         case kActiveTargetVolume:
             total_effective_length = fActiveTargetEffectiveLength;
             break;
@@ -261,7 +257,7 @@ remollVertex remollBeamTarget::SampleVertex(SamplingType_t sampling_type)
         // Find position in this volume (if we are in it)
         G4double effective_position_in_volume;
         G4double actual_position_in_volume;
-        switch (sampling_type) {
+        switch( samp ){
 	    case kActiveTargetVolume:
 	        if ((*it)->GetLogicalVolume()->GetName() == fActiveTargetVolume ){
 	            // This is the active volume, and we only sample here

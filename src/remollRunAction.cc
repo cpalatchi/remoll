@@ -33,9 +33,6 @@ remollRunAction::remollRunAction()
 
   // Create timer
   fTimer = new G4Timer();
-
-  // Store random status before primary particle generation
-  G4RunManager::GetRunManager()->StoreRandomNumberStatusToG4Event(1);
 }
 
 remollRunAction::~remollRunAction()
