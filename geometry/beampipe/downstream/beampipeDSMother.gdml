@@ -4,49 +4,6 @@
     xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <define>
-<!--    <constant name="bellows5_eps" value="0.1"/>
-    <constant name="bellows5_IR" value="500+bellows5_eps/2"/>
-    <constant name="bellows5flange_length" value="48-bellows5_eps"/>
-    <constant name="bellows5flange_Rthickness" value="29.9-bellows5_eps"/>
-    <constant name="bellows5_length" value="100"/>
-    <constant name="bellows5_Rthickness" value="28.4"/>
-    <constant name="bellows5_zpos" value="23430-4500"/>
-    <constant name="bellows5flangeUS_zpos" value="bellows5_zpos - bellows5_length/2 - bellows5flange_length/2 - bellows5_eps/2"/>
-    <constant name="bellows5flangeDS_zpos" value="bellows5_zpos + bellows5_length/2 + bellows5flange_length/2 + bellows5_eps/2"/>
-
-    <position name="bellows5physical_pos" z="bellows5_zpos" unit="mm"/>
-    <position name="bellows5flangeUS_pos" z="bellows5flangeUS_zpos" unit="mm"/>
-    <position name="bellows5flangeDS_pos" z="bellows5flangeDS_zpos" unit="mm"/>
--->
-    <constant name="bellows6_eps" value="0.1"/>
-    <constant name="bellows6_IR" value="525+bellows6_eps/2"/>
-    <constant name="bellows6flange_length" value="40-bellows6_eps"/>
-    <constant name="bellows6flange_Rthickness" value="28.5-bellows6_eps"/>
-    <constant name="bellows6_length" value="100"/>
-    <constant name="bellows6_Rthickness" value="28.5"/>
-    <constant name="bellows6_zpos" value="24280-4500"/>
-    <constant name="bellows6flangeUS_zpos" value="bellows6_zpos - bellows6_length/2 - bellows6flange_length/2 - bellows6_eps/2"/>
-    <constant name="bellows6flangeDS_zpos" value="bellows6_zpos + bellows6_length/2 + bellows6flange_length/2 + bellows6_eps/2"/>
-
-    <position name="bellows6physical_pos" z="bellows6_zpos" unit="mm"/>
-    <position name="bellows6flangeUS_pos" z="bellows6flangeUS_zpos" unit="mm"/>
-    <position name="bellows6flangeDS_pos" z="bellows6flangeDS_zpos" unit="mm"/>
-
-    <constant name="bellows7_eps" value="0.1"/>
-    <constant name="bellows7_IR" value="197+bellows7_eps/2"/>
-    <constant name="bellows7flange_length" value="33.28-bellows7_eps"/>
-    <constant name="bellows7flange_Rthickness" value="51.4-bellows7_eps"/>
-    <constant name="bellows7_length" value="505.1"/>
-    <constant name="bellows7_Rthickness" value="17.8"/>
-    <constant name="bellows7_zpos" value="25119.872+530.352/2"/>
-    <constant name="bellows7flangeUS_zpos" value="bellows7_zpos - bellows7_length/2 - bellows7flange_length/2 - bellows7_eps/2"/>
-    <constant name="bellows7flangeDS_zpos" value="bellows7_zpos + bellows7_length/2 + bellows7flange_length/2 + bellows7_eps/2"/>
-
-    <position name="bellows7physical_pos" z="bellows7_zpos" unit="mm"/>
-    <position name="bellows7flangeUS_pos" z="bellows7flangeUS_zpos" unit="mm"/>
-    <position name="bellows7flangeDS_pos" z="bellows7flangeDS_zpos" unit="mm"/>
-
-
 </define>
 
 <materials>
@@ -56,45 +13,6 @@
     <box name = "SAM_Detectors" x="20" y="13" z="6" unit="mm"/>
     <tube name = "Vacuum_Insert" rmin="0" rmax="80" z="180" deltaphi="360" startphi="0" aunit="deg" lunit= "mm"/>
     <tube name = "SAM_cans" rmin="17.4625" rmax="19.05" z="142" deltaphi="360" startphi="0" aunit="deg" lunit= "mm"/>
-   <!--add bellows 
-   <tube
-    name="bellows5physical_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows5_IR" rmax="bellows5_IR+bellows5_Rthickness" z="bellows5_length" lunit="mm"/>
-   <tube
-    name="bellows5flangeUS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows5_IR" rmax="bellows5_IR+bellows5flange_Rthickness" z="bellows5flange_length" lunit="mm"/>
-   <tube
-    name="bellows5flangeDS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows5_IR" rmax="bellows5_IR+bellows5flange_Rthickness" z="bellows5flange_length" lunit="mm"/>
- add bellows -->
-   <tube
-    name="bellows6physical_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows6_IR" rmax="bellows6_IR+bellows6_Rthickness" z="bellows6_length" lunit="mm"/>
-   <tube
-    name="bellows6flangeUS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows6_IR" rmax="bellows6_IR+bellows6flange_Rthickness" z="bellows6flange_length" lunit="mm"/>
-   <tube
-    name="bellows6flangeDS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows6_IR" rmax="bellows6_IR+bellows6flange_Rthickness" z="bellows6flange_length" lunit="mm"/>
-   <tube
-    name="bellows7physical_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows7_IR" rmax="bellows7_IR+bellows7_Rthickness" z="bellows7_length" lunit="mm"/>
-   <tube
-    name="bellows7flangeUS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows7_IR" rmax="bellows7_IR+bellows7flange_Rthickness" z="bellows7flange_length" lunit="mm"/>
-   <tube
-    name="bellows7flangeDS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows7_IR" rmax="bellows7_IR+bellows7flange_Rthickness" z="bellows7flange_length" lunit="mm"/>
-
     <sphere aunit="deg" startphi="0" deltaphi="360" starttheta="0" deltatheta="90" lunit="mm" name="sam_can_spherical_cap"
             rmin="18.796"
             rmax="19.05"/>
@@ -102,8 +20,9 @@
     <polycone name="solid_DSbeampipe_vacuum"
               aunit="deg" startphi="0" deltaphi="360"
               lunit="mm">
-      <zplane rmin="0" rmax="950" z="19000.0"/>
-      <zplane rmin="0" rmax="600" z="19000.0"/>
+	    <!--<zplane rmin="0" rmax="950" z="19000.0"/>
+      <zplane rmin="0" rmax="600" z="19000.0"/>-->
+      <zplane rmin="0" rmax="580" z="19794.0"/>
       <zplane rmin="0" rmax="770" z="26500.0"/>
     </polycone>
 
@@ -224,54 +143,6 @@
       <solidref ref="sam_can_spherical_cap"/>
       <auxiliary auxtype="Color" auxvalue="Red"/>
     </volume>
-
-<!--  <volume name="bellows5physical_log">
-    <materialref ref="SSbellows5"/>
-    <solidref ref="bellows5physical_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Pink"/>
-  </volume>
-  <volume name="bellows5flangeUS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows5flangeUS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
-  <volume name="bellows5flangeDS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows5flangeDS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
--->
-  <volume name="bellows6physical_log">
-    <materialref ref="SSbellows6"/>
-    <solidref ref="bellows6physical_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Pink"/>
-  </volume>
-  <volume name="bellows6flangeUS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows6flangeUS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
-  <volume name="bellows6flangeDS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows6flangeDS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
-
-  <volume name="bellows7physical_log">
-    <materialref ref="SSbellows7"/>
-    <solidref ref="bellows7physical_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Pink"/>
-  </volume>
-  <volume name="bellows7flangeUS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows7flangeUS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
-  <volume name="bellows7flangeDS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows7flangeDS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
 
 
     <volume name="logic_DSpipe2_DSplate">
@@ -409,67 +280,27 @@
       <materialref ref="G4_Galactic"/>
       <solidref ref="solid_DSbeampipe_vacuum"/>
 
-<!--      <physvol name="DSpipe2_DSpipe2_2">
+ <!--      <physvol name="DSpipe2_DSpipe2_2">
 	<volumeref ref="logic_DSpipe2_2"/>
       </physvol>
 
-      <physvol name="DSpipe2_DSplate">
+     <physvol name="DSpipe2_DSplate">
 	<volumeref ref="logic_DSpipe2_DSplate"/>
       </physvol>
 
       <physvol name="DSpipe2_bellow">
 	<volumeref ref="logic_DSpipe2_bellow"/>
-      </physvol>
+      </physvol>-->
 
       <physvol name="DSpipe3_DSpipe">
 	<volumeref ref="logic_DSpipe3"/>
       </physvol>
--->
+
       <physvol name="Neckdown">
 	<volumeref ref="logic_Neckdown"/>
       </physvol>
 
-<!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-<!--    <physvol name="bellows5physical_phys">
-      <volumeref ref="bellows5physical_log"/>
-      <positionref ref="bellows5physical_pos"/>
-    </physvol>
-    <physvol name="bellows5flangeUS_phys">
-      <volumeref ref="bellows5flangeUS_log"/>
-      <positionref ref="bellows5flangeUS_pos"/>
-    </physvol>
-    <physvol name="bellows5flangeDS_phys">
-      <volumeref ref="bellows5flangeDS_log"/>
-      <positionref ref="bellows5flangeDS_pos"/>
-    </physvol>
--->
-    <physvol name="bellows6physical_phys">
-      <volumeref ref="bellows6physical_log"/>
-      <positionref ref="bellows6physical_pos"/>
-    </physvol>
-    <physvol name="bellows6flangeUS_phys">
-      <volumeref ref="bellows6flangeUS_log"/>
-      <positionref ref="bellows6flangeUS_pos"/>
-    </physvol>
-    <physvol name="bellows6flangeDS_phys">
-      <volumeref ref="bellows6flangeDS_log"/>
-      <positionref ref="bellows6flangeDS_pos"/>
-    </physvol>
-
-    <physvol name="bellows7physical_phys">
-      <volumeref ref="bellows7physical_log"/>
-      <positionref ref="bellows7physical_pos"/>
-    </physvol>
-    <physvol name="bellows7flangeUS_phys">
-      <volumeref ref="bellows7flangeUS_log"/>
-      <positionref ref="bellows7flangeUS_pos"/>
-    </physvol>
-    <physvol name="bellows7flangeDS_phys">
-      <volumeref ref="bellows7flangeDS_log"/>
-      <positionref ref="bellows7flangeDS_pos"/>
-    </physvol>
-
-<!--      <physvol name="Neckdown_DSpipe">
+      <physvol name="Neckdown_DSpipe">
 	<volumeref ref="logic_Neckdown_DSpipe"/>
       </physvol>
 
@@ -484,7 +315,7 @@
       <physvol name="Neckdown_bellows_3">
 	<volumeref ref="logic_Neckdown_bellows_3"/>
       </physvol>
--->
+
       <physvol name="Shield">
 	<volumeref ref="logic_Shield"/>
 	<position name="Shield_position" unit="mm" x="0" y="0" z="25637.524+12.7+34.798+12.7+50+150"/>
@@ -633,14 +464,13 @@
       </physvol>
 
      
-<!--      <physvol name="SAMpipe">
+      <physvol name="SAMpipe">
 	<volumeref ref="logic_SAMpipe"/>
       </physvol>
 
       <physvol name="neckdown_flange">
 	<volumeref ref="logic_neckdown_flange"/>
       </physvol>
--->
 
 
     </volume>

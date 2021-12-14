@@ -28,21 +28,6 @@
 
     <position name="origin" x="0" y="0" z="0"/>
 
-    <constant name="bellows1_eps" value="0.2"/>
-    <constant name="bellows1_IR" value="101+bellows1_eps/2"/>
-    <constant name="bellows1flange_length" value="24.64-bellows1_eps"/>
-    <constant name="bellows1flange_Rthickness" value="25.5-bellows1_eps"/>
-    <constant name="bellows1_length" value="280.9"/>
-    <constant name="bellows1_Rthickness" value="12.8"/>
-    <constant name="bellows1_zpos" value="1690"/>
-    <constant name="bellows1flangeUS_zpos" value="bellows1_zpos - bellows1_length/2 - bellows1flange_length/2 - bellows1_eps/2"/>
-    <constant name="bellows1flangeDS_zpos" value="bellows1_zpos + bellows1_length/2 + bellows1flange_length/2 + bellows1_eps/2"/>
-
-   <position name="bellows1physical_pos" z="bellows1_zpos" unit="mm"/>
-    <position name="bellows1flangeUS_pos" z="bellows1flangeUS_zpos" unit="mm"/>
-    <position name="bellows1flangeDS_pos" z="bellows1flangeDS_zpos" unit="mm"/>
-
-
     <rotation name="rot_x90" unit="deg" x="90"/>
   </define>
 
@@ -132,21 +117,6 @@
 		z="0.2"/>
     </union>
 
-   <!--add bellows -->
-   <tube
-    name="bellows1physical_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows1_IR" rmax="bellows1_IR+bellows1_Rthickness" z="bellows1_length" lunit="mm"/>
-   <tube
-    name="bellows1flangeUS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows1_IR" rmax="bellows1_IR+bellows1flange_Rthickness" z="bellows1flange_length" lunit="mm"/>
-   <tube
-    name="bellows1flangeDS_solid"
-    startphi="0" deltaphi="360" aunit="deg"
-    rmin="bellows1_IR" rmax="bellows1_IR+bellows1flange_Rthickness" z="bellows1flange_length" lunit="mm"/>
-
-
     <!-- Target upstream beampipe -->
     <polycone name="targetUSBeamPipeOuter_solid"
               aunit="deg" startphi="0" deltaphi="360"
@@ -184,23 +154,6 @@
       <auxiliary auxtype="TargetSamplingVolume" auxvalue=""/>
       <auxiliary auxtype="Color" auxvalue="white"/>
     </volume>
-
-<!--add bellows G4_STAINLESS-STEEL -->
-  <volume name="bellows1physical_log">
-    <materialref ref="SSbellows1"/>
-    <solidref ref="bellows1physical_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Pink"/>
-  </volume>
-  <volume name="bellows1flangeUS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows1flangeUS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
-  <volume name="bellows1flangeDS_log">
-    <materialref ref="G4_STAINLESS-STEEL"/>
-    <solidref ref="bellows1flangeDS_solid"/>
-    <auxiliary auxtype="Color" auxvalue="Orange"/>
-  </volume>
 
     <volume name="targetUSBeamPipeVacuum">
       <materialref ref="G4_Galactic"/>
@@ -303,25 +256,10 @@
 	<position name="targ_downstream_window" unit="mm" x="0" y="0" z="625+1"/>
       </physvol>
 
-<!--add bellows G4_STAINLESS-STEEL and custom bellows SS material  -->
-    <physvol name="bellows1physical_phys">
-      <volumeref ref="bellows1physical_log"/>
-      <positionref ref="bellows1physical_pos"/>
-    </physvol>
-    <physvol name="bellows1flangeUS_phys">
-      <volumeref ref="bellows1flangeUS_log"/>
-      <positionref ref="bellows1flangeUS_pos"/>
-    </physvol>
-    <physvol name="bellows1flangeDS_phys">
-      <volumeref ref="bellows1flangeDS_log"/>
-      <positionref ref="bellows1flangeDS_pos"/>
-    </physvol>
-
-
       <physvol>
 	<volumeref ref="targetUSBeamPipe"/>
       </physvol>
-
+      
       <physvol>
 	<volumeref ref="LeadCollar_logic"/>
 	<position name="LeadCollar_pos" unit="mm" x="0" y="0"
@@ -336,7 +274,7 @@
 
       <physvol>
 	<volumeref ref="ConcreteShieldTop"/>
-	<position name="ConcreteShieldTop_pos" unit="mm" x="0" y="1779" z="0"/>
+	<position name="ConcreteShieldTop_pos" unit="mm" x="0" y="1779+6" z="0"/>
       </physvol>
 
       <physvol>
