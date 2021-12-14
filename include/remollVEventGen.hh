@@ -44,9 +44,7 @@ class remollVEventGen {
 	  fBeamTarg = bt;
 	}
 
-	void SetSamplingType(SamplingType_t type) { fSamplingType = type; }
-	SamplingType_t GetSamplingType() const { return fSamplingType; }
-
+	void SetSampType( SampType_t st ) { fSampType = st; }
 	void SetDoMultScatt( G4bool multscatt ){ fApplyMultScatt = multscatt; }
 
         void SetEmin(double emin) { fE_min = emin; }
@@ -92,7 +90,7 @@ public:
 
     protected:
 
-	SamplingType_t fSamplingType;
+	SampType_t fSampType;
 	G4bool     fApplyMultScatt;
 
     private:

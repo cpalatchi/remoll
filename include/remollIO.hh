@@ -62,10 +62,10 @@ class remollSeed_t: public TObject {
     // Save function for use in ROOT tree
     int Save() const {
       std::stringstream name;
-      name << "run" << fRunNo << "evt" << fEvtNo << ".state";
+      name << "run" << fRunNo << "evt" << fEvtNo << ".rndm";
       std::ofstream file(name.str());
       file << fSeed;
-      return 1;
+      return fSeed.Length();
     };
   ClassDef(remollSeed_t,1);
 };
@@ -75,13 +75,13 @@ class remollIO {
         // Singleton pointer
         static remollIO* gInstance;
         // Private constructor
-        remollIO(const G4String& outputfile);
+        remollIO();
 
     public:
         // Public destructor
         virtual ~remollIO();
         // Static instance getter
-        static remollIO* GetInstance(const G4String& outputfile = "remollout.root");
+        static remollIO* GetInstance();
 
 	void SetFilename(const G4String& name) { fFilename = name; }
 	G4String GetFilename() const { return fFilename; }
