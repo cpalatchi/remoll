@@ -1555,11 +1555,12 @@
         <positionref ref="posCOLL2_Cu"/>
       </physvol>
 
+<!-- this sieve in is units of inches and other branches on git don't like that unit. Commenting out because I don't need the sieve
       <physvol name="USsieve">
         <file name= "upstream/sieve.gdml"/>
         <positionref ref="sieveActualCenter_pos"/>
       </physvol>
-
+-->
       <physvol name="UScoil">
         <file name= "upstream/upstreamToroid.gdml"/>
       </physvol>
