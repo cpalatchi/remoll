@@ -89,8 +89,8 @@ void remollGenExternal::SetGenExternalFile(G4String& filename)
   if (fTree->GetBranch("ev")) {
     fTree->SetBranchAddress("ev", &fEvent);
   } else {
-    G4cerr << "Could not find branch ev in event file " << filename << G4endl;
-    return;
+      G4cerr << "Could not find branch ev in event file" << filename << G4endl;
+    //return;
   }
 }
 
