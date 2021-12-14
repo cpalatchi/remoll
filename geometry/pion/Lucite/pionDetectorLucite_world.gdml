@@ -4,7 +4,6 @@
 
 <define>
   <position name="pionDetectorCenter" z="1.5*m"/>
-  <position name="pionDetectorShieldCenter" z="1.53*m"/>
 </define>
 
 <materials>
@@ -23,12 +22,6 @@
     <physvol>
       <file name="pionDetectorLucite.gdml"/>
       <positionref ref="pionDetectorCenter"/>
-      <rotation x="90*deg"/>
-    </physvol>
-
-    <physvol>
-      <file name="pionDetectorLucite.gdml" volname="pionDetectorLuciteShieldDS_logical"/>
-      <positionref ref="pionDetectorShieldCenter"/>
       <rotation x="90*deg"/>
     </physvol>
       
