@@ -4,7 +4,7 @@
 #/tracking/storeTrajectory 1
 
 # This must be called before initialize
-/remoll/geometry/setfile geometry/mollerMother.gdml
+/remoll/geometry/setfile geometry/mollerMother_merged.gdml
 # Parallel world geometry is optional - detector 28 (the primary detector array's idealize vacuum detector) is included in this parallel world now.
 /remoll/parallel/setfile geometry/mollerParallel.gdml 
 
@@ -42,8 +42,7 @@
 # Mainz test energy
 #/remoll/beamene 855 MeV
 
-/remoll/evgen/beam/origin 0 0 -7.5 m
-#/remoll/evgen/set elastic
+/remoll/evgen/set moller
 #/remoll/evgen/thcommin 30.0 deg
 #/remoll/evgen/thcommax 150.0 deg
 #/remoll/evgen/set elastic 
@@ -82,5 +81,5 @@
 /remoll/filename remollout.root
 
 #/tracking/verbose 2
-#/remoll/printtargetinfo
+/remoll/printtargetinfo
 /run/beamOn 100
