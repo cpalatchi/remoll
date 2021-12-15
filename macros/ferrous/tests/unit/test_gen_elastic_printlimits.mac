@@ -1,4 +1,0 @@
-/run/initialize
-/remoll/evgen/set elastic
-/remoll/evgen/printlimits
-/run/beamOn 1

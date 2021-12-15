@@ -1,5 +1,0 @@
-/run/initialize
-/remoll/evgen/set pion
-/run/beamOn 0
-/remoll/evgen/pion/settype pi-
-/run/beamOn 1
