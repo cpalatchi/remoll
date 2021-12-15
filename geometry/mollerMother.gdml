@@ -44,11 +44,11 @@
     </physvol>
  
     <!-- Upstream region -->
- <!--   <physvol>
+    <physvol>
       <file name="upstream/upstreamDaughter_merged.gdml"/>
       <positionref ref="upstreamCenter"/>
     </physvol>
--->
+
     <!-- Hybrid region -->
     <physvol>
       <file name="hybrid/hybridDaughter_merged.gdml"/>
@@ -61,25 +61,24 @@
 
     <!-- Downstream beampipe -->
   <!--turned on to see if ferrous bellows ok here-->
-  <!--
-    <physvol>
+<!--    <physvol>
       <file name="beampipe/downstream/beampipeDSMother.gdml"/>
-    </physvol>-->
-
+    </physvol>
+-->
     <!-- Front Tracking Detectors -->
-    <!--    <physvol>
+<!--       <physvol>
       <file name="tracking/trackingDaughter.gdml"/>
       <positionref ref="trackingDetectorVirtualPlaneFront1_pos"/>
-    </physvol>-->
-
-    <!-- Back Tracking Detectors -->
-    <!--   <physvol>
+    </physvol>
+-->
+<!--     Back Tracking Detectors -->
+<!--      <physvol>
       <file name="tracking/trackingDaughter.gdml"/>
       <positionref ref="trackingDetectorVirtualPlaneBack1_pos"/>
-    </physvol>-->
-
+    </physvol>
+-->
     <!-- Main Detectors -->
-    <!--
+  <!--
     <physvol>
       <file name="detector/detector.gdml"/>
       <positionref ref="detectorCenter"/>
@@ -120,7 +119,7 @@
     </physvol>-->
 
     <!-- ferrous materials --> 
- <!-- <physvol name="bearings_PV">
+  <physvol name="bearings_PV">
       <file name="ferrous/bearings/bearings.gdml"/>
       <positionref ref="ferrous_pos"/>
     </physvol>
@@ -149,7 +148,7 @@
       <file name="ferrous/gemsupport/gemsupport.gdml"/>
      <positionref ref="ferrous_pos"/>
     </physvol>
--->
+
 
     <auxiliary auxtype="Alpha" auxvalue="0.1"/>
   </volume>
