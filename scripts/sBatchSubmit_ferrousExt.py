@@ -7,7 +7,7 @@ def main():
 
     email = "palatchi@jlab.org"
 
-    config = "remoll_ferrous_1006_ext_1M_20220116"
+    config = "remoll_ferrous_1006_ext_1M_20220116_attempt2"
 
     sourceDir = "/work/halla/moller12gev//palatchi/moller/remoll/"
 #    outDir = "/work/halla/moller12gev/palatchi/moller/remoll/rootfiles/"+config
@@ -66,7 +66,7 @@ def createMacFile(outDirFull,nrEv,jobNr, detectorList):
 #?    f.write("/remoll/oldras true\n")
 
     f.write("/remoll/evgen/set external\n")
-    f.write("/remoll/evgen/external/file rootfiles/o_remollSkimTree1006.root\n")
+    f.write("/remoll/evgen/external/file /work/halla/moller12gev/palatchi/moller/remoll/rootfiles/o_remollSkimTree1006.root\n")
     f.write("/remoll/evgen/external/detid 1006\n")
     f.write("/remoll/evgen/external/zOffset 0.001\n")
     
