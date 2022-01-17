@@ -48,7 +48,7 @@
 
     <!--shielding concrete rebar ferrous-->
     <box lunit="mm" name="DSrebar_sheet" x="4261" y="5160 + 127.65 + 12.43" z="25.4"/>
-    <tube aunit="deg" deltaphi="360" lunit="mm" name="DSrebar_tube" rmin="0" rmax="800+1+6*25.4" z="500+1"/>
+    <tube aunit="deg" deltaphi="360" lunit="mm" name="DSrebar_tube" rmin="0" rmax="800+1+12*25.4" z="500+1"/>
 
     <multiUnion name="DSrebar_multi" >
       <multiUnionNode name="rebards_node-1">

@@ -351,11 +351,14 @@
     <fraction n="0.014" ref="Fe"/>
   </material>
 
-<!--ferrous make rebar iron/concrete mixture to approximate 6x6" grid with 1" dia iron rebar in concrete 30% iron, 70% concrete. Dconcrete = 2.3g/cm3 DFe = 7.874g/cm3, D=0.3*7.874+0.7*2.3-->
+<!--ferrous make rebar iron/concrete mixture to approximate 6x6" grid with 1" dia iron rebar in concrete 16% iron, 84% concrete. Dconcrete = 2.3g/cm3 DFe = 7.874g/cm3, D=0.16*7.874+0.84*2.3-->
   <material name="rebarConcrete" state="solid">
-    <D value="3.97" unit="g/cm3"/>
+  <!--  <D value="3.97" unit="g/cm3"/>
     <fraction n="0.70" ref="Concrete"/>
-    <fraction n="0.30" ref="Fe"/>
+    <fraction n="0.30" ref="Fe"/>-->
+    <D value="3.19" unit="g/cm3"/>
+    <fraction n="0.16" ref="Concrete"/>
+    <fraction n="0.84" ref="Fe"/>
   </material>
 
 
