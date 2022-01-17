@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE gdml [
-<!ENTITY rebardsConcreteParallel_matrix SYSTEM "rebardsConcrete_matrix.xml">
+<!ENTITY rebardsParallel_matrix SYSTEM "rebards_matrix.xml">
 ]>
 
 <gdml 
@@ -9,15 +9,15 @@
       xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <define>
- &rebardsConcreteParallel_matrix;
+ &rebardsParallel_matrix;
     <!--constant for shieldings - dimension from Alan design -->
-    <constant name="rebardsConcreteBoxx" value="rebardsConcrete_m[1]"/>
-    <constant name="rebardsConcreteBoxy" value="rebardsConcrete_m[2]"/>
-    <constant name="rebardsConcreteBoxz" value="rebardsConcrete_m[3]"/>
- <!--   <constant name="rebardsConcreteThickness" value="rebardsConcrete_m[4]"/>-->
-    <constant name="rebardsConcreteRmax" value="rebardsConcrete_m[4]"/>
-    <constant name="rebardsConcreteEpsilon" value="rebardsConcrete_m[5]"/>
-    <constant name="rebardsConcreteYtube" value="rebardsConcrete_m[6]"/>
+    <constant name="rebardsBoxx" value="rebards_m[1]"/>
+    <constant name="rebardsBoxy" value="rebards_m[2]"/>
+    <constant name="rebardsBoxz" value="rebards_m[3]"/>
+ <!--   <constant name="rebardsThickness" value="rebards_m[4]"/>-->
+    <constant name="rebardsRmax" value="rebards_m[4]"/>
+    <constant name="rebardsEpsilon" value="rebards_m[5]"/>
+    <constant name="rebardsYtube" value="rebards_m[6]"/>
 
 </define>
 
@@ -26,31 +26,31 @@
 
 <solids>
     <!--shielding concrete -->
-    <box lunit="mm" name="rebardsConcrete_box" x="rebardsConcreteBoxx" y="rebardsConcreteBoxy" z="rebardsConcreteBoxz"/>
+    <box lunit="mm" name="rebards_box" x="rebardsBoxx" y="rebardsBoxy" z="rebardsBoxz"/>
 
 
-    <tube aunit="deg" deltaphi="360" lunit="mm" name="rebardsConcrete_tube"
-          rmin="0" rmax="rebardsConcreteRmax" z="rebardsConcreteBoxz+rebardsConcreteEpsilon"/>
+    <tube aunit="deg" deltaphi="360" lunit="mm" name="rebards_tube"
+          rmin="0" rmax="rebardsRmax" z="rebardsBoxz+rebardsEpsilon"/>
 
-    <subtraction name="rebardsConcrete_sub">
-      <first ref = "rebardsConcrete_box"/>
-      <second ref = "rebardsConcrete_tube"/>
-      <position name ="rebardsConcreteSub_pos" lunit="mm" x="0" y="rebardsConcreteYtube" z="0" />
+    <subtraction name="rebards_sub">
+      <first ref = "rebards_box"/>
+      <second ref = "rebards_tube"/>
+      <position name ="rebardsSub_pos" lunit="mm" x="0" y="rebardsYtube" z="0" />
     </subtraction>
 
 </solids>
 
 <structure>
-    <volume name="rebardsConcrete_logic">
+    <volume name="rebards_logic">
       <materialref ref="G4_Galactic"/>
-      <solidref ref="rebardsConcrete_sub"/>
+      <solidref ref="rebards_sub"/>
       <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
       <auxiliary auxtype="DetNo" auxvalue="1006"/>
     </volume>
 </structure>
 
-<setup name="rebardsConcreteParallel_setup" version="1.0">
-  <world ref="rebardsConcrete_logic"/>
+<setup name="rebardsParallel_setup" version="1.0">
+  <world ref="rebards_logic"/>
 </setup>
 
 

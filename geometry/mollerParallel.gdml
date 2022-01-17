@@ -703,8 +703,8 @@
       <positionref ref="rebarus_pos"/>
     </physvol>
 
-    <physvol name="rebardsConcrete_phys">
-      <file name="ferrous/rebards/rebardsConcreteParallel.gdml"/>
+    <physvol name="rebards_phys">
+      <file name="ferrous/rebards/rebardsParallel.gdml"/>
       <positionref ref="rebards_pos"/>
     </physvol>
 
