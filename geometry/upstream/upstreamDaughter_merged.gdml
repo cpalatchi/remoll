@@ -57,11 +57,11 @@
       </multiUnionNode>
      <multiUnionNode name="rebards_node-2">
        <solid ref="DSrebar_sheet" />
-       <position name ="DSrebar_pos1" lunit="mm" x="0" y="0" z="6*25.4" />
+       <position name ="DSrebar_pos2" lunit="mm" x="0" y="0" z="6*25.4" />
       </multiUnionNode>
      <multiUnionNode name="rebards_node-3">
        <solid ref="DSrebar_sheet" />
-       <position name ="DSrebar_pos1" lunit="mm" x="0" y="0" z="-6*25.4" />
+       <position name ="DSrebar_pos3" lunit="mm" x="0" y="0" z="-6*25.4" />
       </multiUnionNode>
     </multiUnion>
 

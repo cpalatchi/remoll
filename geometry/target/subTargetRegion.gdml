@@ -76,11 +76,71 @@
     <tube aunit="deg" deltaphi="360" lunit="mm" name="innerBarite_solid"
           rmin="150" rmax="330" z="500"/>
 
-    <subtraction name="concreteDS_sub">
+    <subtraction name="concreteDS_sub0">
       <first ref = "concreteDS"/>
       <second ref = "Shield_tube"/>
       <position name ="concreteSub" lunit="mm" x="0" y="940" z="0" />
     </subtraction>
+
+    <!--shielding concrete rebar ferrous-->
+    <box lunit="mm" name="USrebar_sheet" x="concreteBoxx-2" y="concreteBoxy-concreteThickness-1246-2" z="25.4"/>
+    <tube aunit="deg" deltaphi="360" lunit="mm" name="USrebar_tube" rmin="0" rmax="453+6*25.4" z="concreteThickness+2.0"/>
+
+    <multiUnion name="USrebar_multi" >
+      <multiUnionNode name="rebarus_node-1">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos1" lunit="mm" x="0" y="0" z="0" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-2">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos2" lunit="mm" x="0" y="0" z="6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-3">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos3" lunit="mm" x="0" y="0" z="-6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-4">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos4" lunit="mm" x="0" y="0" z="2*6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-5">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos5" lunit="mm" x="0" y="0" z="-2*6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-6">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos6" lunit="mm" x="0" y="0" z="3*6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-7">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos7" lunit="mm" x="0" y="0" z="-3*6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-8">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos8" lunit="mm" x="0" y="0" z="4*6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebarus_node-9">
+       <solid ref="USrebar_sheet" />
+       <position name ="USrebar_pos9" lunit="mm" x="0" y="0" z="-4*6*25.4" />
+      </multiUnionNode>
+
+    </multiUnion>
+
+
+<!--remove rebar sheets from concrete shielding geometry so no overlap-->
+    <subtraction name="concreteDS_sub">
+      <first ref = "concreteDS_sub0"/>
+      <second ref = "USrebar_multi"/>
+      <position name ="USrebar_subtract" lunit="mm" x="0" y="0" z="0" />
+    </subtraction>
+
+<!--subtract hole from rebar-->
+   <subtraction name="USrebar_logic">
+      <first ref = "USrebar_multi"/>
+      <second ref = "USrebar_tube"/>
+      <position name ="USrebarSubpos" lunit="mm" x="0" y="940" z="0" />
+    </subtraction>
+
 
     <subtraction name="concreteTop_sub">
       <first ref = "concreteTop"/>
@@ -186,6 +246,15 @@
       <auxiliary auxtype="Alpha" auxvalue="1.0"/>
     </volume>
 
+<!--ferrous rebar -->
+    <volume name="USrebar">
+      <materialref ref="rebarConcrete"/>
+      <solidref ref="USrebar_logic"/>
+      <auxiliary auxtype="Color" auxvalue="Orange"/>
+      <auxiliary auxtype="Alpha" auxvalue="1.0"/>
+    </volume>
+
+
     <volume name="ConcreteShieldTop">
       <materialref ref="Concrete"/>
       <solidref ref="concreteTop_sub"/>
@@ -270,6 +339,12 @@
       <physvol>
 	<volumeref ref="ConcreteShieldDS"/>
 	<position name="ConcreteShieldDS_pos" unit="mm" x="0" y="concreteBoxy/2.-4292" z="concreteBoxz/2. - concreteThickness/2."/>
+      </physvol>
+
+<!--ferrous rebar ds -->
+      <physvol>
+	<volumeref ref="USrebar"/>
+	<position name="USrebar_pos" unit="mm" x="0" y="concreteBoxy/2.-4292" z="concreteBoxz/2. - concreteThickness/2."/>
       </physvol>
 
       <physvol>
