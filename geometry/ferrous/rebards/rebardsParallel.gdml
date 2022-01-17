@@ -2,6 +2,11 @@
 
 <!DOCTYPE gdml [
 <!ENTITY rebardsParallel_matrix SYSTEM "rebards_matrix.xml">
+<!ENTITY rebardsParallel_positions SYSTEM "rebards_positions.xml">
+<!ENTITY rebardsParallel_rotations SYSTEM "rebards_rotations.xml">
+<!ENTITY rebardsParallel_solids SYSTEM "rebards_solids.xml">
+<!ENTITY rebardsParallel_volumes SYSTEM "rebardsParallel_volumes.xml">
+<!ENTITY materials SYSTEM "../../materials.xml">
 ]>
 
 <gdml 
@@ -10,54 +15,24 @@
 
 <define>
  &rebardsParallel_matrix;
-    <!--constant for shieldings - dimension from Alan design -->
-    <constant name="rebardsBoxx" value="rebards_m[1]"/>
-    <constant name="rebardsBoxy" value="rebards_m[2]"/>
-    <constant name="rebardsBoxz" value="rebards_m[3]"/>
- <!--   <constant name="rebardsThickness" value="rebards_m[4]"/>-->
-    <constant name="rebardsRmax" value="rebards_m[4]"/>
-    <constant name="rebardsEpsilon" value="rebards_m[5]"/>
-    <constant name="rebardsYtube" value="rebards_m[6]"/>
-
+ &rebardsParallel_positions;
+ &rebardsParallel_rotations;
 </define>
 
 <materials>
 </materials>
 
 <solids>
-    <!--shielding concrete -->
-    <box lunit="mm" name="rebards_box" x="rebardsBoxx" y="rebardsBoxy" z="rebardsBoxz"/>
-
-
-    <tube aunit="deg" deltaphi="360" lunit="mm" name="rebards_tube"
-          rmin="0" rmax="rebardsRmax" z="rebardsBoxz+rebardsEpsilon"/>
-
-    <subtraction name="rebards_sub">
-      <first ref = "rebards_box"/>
-      <second ref = "rebards_tube"/>
-      <position name ="rebardsSub_pos" lunit="mm" x="0" y="rebardsYtube" z="0" />
-    </subtraction>
-
+ &rebardsParallel_solids;
 </solids>
 
 <structure>
-    <volume name="rebards_logic">
-      <materialref ref="G4_Galactic"/>
-      <solidref ref="rebards_sub"/>
-      <auxiliary auxtype="SensDet" auxvalue="planeDet"/>
-      <auxiliary auxtype="DetNo" auxvalue="1006"/>
-    </volume>
+ &rebardsParallel_volumes;
 </structure>
 
 <setup name="rebardsParallel_setup" version="1.0">
-  <world ref="rebards_logic"/>
+  <world ref="rebardsParallel_logic"/>
 </setup>
 
 
 </gdml>
-
-
-
-
-
-

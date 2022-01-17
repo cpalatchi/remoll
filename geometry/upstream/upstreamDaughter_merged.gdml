@@ -25,7 +25,6 @@
   &materials;
 
   <solids>
-    
     <box lunit="mm" name="boxConcreteShielding_1" x="USBoxmother_width" y="USBoxmother_height" z="USBoxmother_length"/>
     <box lunit="mm" name="boxConcreteShielding_2" x="USBoxmother_width + 1" y="USBoxmother_height + 1" z="USBoxmothersubtract_length - 1110"/>
     <subtraction name="boxConcreteShielding"> <!-- originally was _4"> -->
@@ -41,11 +40,47 @@
 
     <tube aunit="deg" deltaphi="360" lunit="mm" name="dsBarite_solid" rmin="551" rmax="800" z="500"/>
 
-    <subtraction name="DSconcreteShielding_sub">
+    <subtraction name="DSconcreteShielding_sub0">
       <first ref = "DSconcrete"/>
       <second ref = "ShieldDS_tube"/>
       <position name ="concreteSub2" lunit="mm" x="0" y="420-127.65/2 - 18 - 12.43/2" z="0" />
     </subtraction>
+
+    <!--shielding concrete rebar ferrous-->
+    <box lunit="mm" name="DSrebar_sheet" x="4261+1" y="5160 + 127.65 + 12.43+1" z="25.4"/>
+    <tube aunit="deg" deltaphi="360" lunit="mm" name="DSrebar_tube" rmin="0" rmax="800+1+6*25.4" z="500+1"/>
+
+    <multiUnion name="DSrebar_multi" >
+      <multiUnionNode name="rebards_node-1">
+       <solid ref="DSrebar_sheet" />
+       <position name ="DSrebar_pos1" lunit="mm" x="0" y="0" z="0" />
+      </multiUnionNode>
+     <multiUnionNode name="rebards_node-2">
+       <solid ref="DSrebar_sheet" />
+       <position name ="DSrebar_pos1" lunit="mm" x="0" y="0" z="6*25.4" />
+      </multiUnionNode>
+     <multiUnionNode name="rebards_node-3">
+       <solid ref="DSrebar_sheet" />
+       <position name ="DSrebar_pos1" lunit="mm" x="0" y="0" z="-6*25.4" />
+      </multiUnionNode>
+    </multiUnion>
+
+<!--remove rebar sheets from concrete shielding geometry so no overlap-->
+    <subtraction name="DSconcreteShielding_sub">
+      <first ref = "DSconcreteShielding_sub0"/>
+      <second ref = "DSrebar_multi"/>
+      <position name ="DSrebar_subtract" lunit="mm" x="0" y="0" z="0" />
+    </subtraction>
+
+<!--subtract hole from rebar-->
+   <subtraction name="DSrebar_logic">
+      <first ref = "DSrebar_multi"/>
+      <second ref = "DSrebar_tube"/>
+<!--      <positionref ref ="concreteSub2"/>-->
+      <position name ="rebarSub2" lunit="mm" x="0" y="420-127.65/2 - 18 - 12.43/2" z="0" />
+    </subtraction>
+
+
 
     <box lunit="mm" name="coll1SideShielding_solid"
 	 x="800"
@@ -92,6 +127,14 @@
       <auxiliary auxtype="Color" auxvalue="Green"/>
       <auxiliary auxtype="Alpha" auxvalue="1.0"/>
     </volume>
+
+<!--ferrous rebar -->
+    <volume name="DSrebar">
+      <materialref ref="rebarConcrete"/>
+      <solidref ref="DSrebar_logic"/>
+      <auxiliary auxtype="Color" auxvalue="Orange"/>
+      <auxiliary auxtype="Alpha" auxvalue="1.0"/>
+    </volume>
     
     <volume name="dsBarite_logic">
       <materialref ref="barite"/>
@@ -130,6 +173,12 @@
       <physvol>
 	<volumeref ref="DSconcreteShielding"/>
 	<position name="DSconcreteShielding_pos" unit="mm" x="0" y="-420 + 127.65/2 + 18 + 12.43/2" z="4005-250/2- 2000"/>
+      </physvol>
+
+<!--ferrous rebar ds -->
+      <physvol>
+	<volumeref ref="DSrebar"/>
+	<position name="DSrebar_pos" unit="mm" x="0" y="-420 + 127.65/2 + 18 + 12.43/2" z="4005-250/2- 2000"/>
       </physvol>
 
       <physvol name="dsBarite">
